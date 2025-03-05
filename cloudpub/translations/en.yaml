@@ -1,0 +1,9 @@
+configuration:
+  token:
+    name: Token
+    description: >-
+      Token for binding the CloudPub client to your account. Provide only the token, without the `./clo set token ` command.
+  services:
+    name: Publications
+    description: >-
+      List of services to publish. Supported protocols: HTTP, HTTPS, TCP, UDP, and 1C.

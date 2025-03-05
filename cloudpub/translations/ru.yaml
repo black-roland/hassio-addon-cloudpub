@@ -1,0 +1,9 @@
+configuration:
+  token:
+    name: Токен
+    description: >-
+      Токен для привязки клиента CloudPub к вашему аккаунту. Укажите только токен, без команды `./clo set token ` в начале.
+  services:
+    name: Публикации
+    description: >-
+      Список сервисов для публикации. Поддерживаются протоколы: HTTP, HTTPS, TCP, UDP и 1C.
