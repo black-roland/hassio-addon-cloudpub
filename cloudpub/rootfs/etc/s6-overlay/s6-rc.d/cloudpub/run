@@ -1,0 +1,50 @@
+#!/command/with-contenv bashio
+
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# Определяем базовую команду clo с параметром --conf
+CLO="clo --conf /config/client.toml"
+
+# Логируем начало выполнения скрипта
+bashio::log.info "Starting CloudPub addon..."
+
+# Получаем токен из конфигурации
+TOKEN=$(bashio::config 'token')
+bashio::log.info "Token retrieved from configuration."
+
+# Устанавливаем токен
+bashio::log.info "Setting CloudPub token..."
+$CLO set token "$TOKEN"
+bashio::log.info "CloudPub token set successfully."
+
+# Получаем список сервисов
+SERVICES=$(bashio::config 'services')
+bashio::log.info "Services configuration retrieved."
+
+# Регистрируем каждый сервис
+for ID in $(bashio::config "services|keys"); do
+  TYPE=$(bashio::config "services[${ID}].type")
+  LOCAL_ADDR=$(bashio::config "services[${ID}].local_addr")
+  NAME=$(bashio::config "services[${ID}].name")
+
+  bashio::log.info "Registering service:"
+  bashio::log.info "  - Type: ${TYPE}"
+  bashio::log.info "  - Local Address: ${LOCAL_ADDR}"
+
+  if bashio::var.has_value "${NAME}"; then
+    bashio::log.info "  - Name: ${NAME}"
+    bashio::log.info "Running command: $CLO register --name ${NAME} ${TYPE} ${LOCAL_ADDR}"
+    $CLO register --name "${NAME}" "${TYPE}" "${LOCAL_ADDR}"
+  else
+    bashio::log.info "Running command: $CLO register ${TYPE} ${LOCAL_ADDR}"
+    $CLO register "${TYPE}" "${LOCAL_ADDR}"
+  fi
+
+  bashio::log.info "Service registered successfully."
+done
+
+# Логируем запуск CloudPub
+bashio::log.info "Starting CloudPub in the background..."
+exec $CLO run

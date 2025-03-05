@@ -1,0 +1,29 @@
+name: CloudPub Client
+slug: cloudpub
+version: 0.0.1-beta.8
+description: >-
+  CloudPub creates public URLs to access Home Assistant and other local resources (HTTP, TCP/UDP, 1C, Minecraft) behind NAT. Unofficial addon.
+url: https://github.com/black-roland/hassio-addon-cloudpub
+init: false
+startup: application
+boot: auto
+arch:
+  - aarch64
+  - amd64
+  - armv7
+map:
+  - type: addon_config
+    read_only: False
+stage: experimental
+options:
+  token: ""
+  services:
+    - type: "http"
+      local_addr: "homeassistant:8123"
+      name: "homeassistant"
+schema:
+  token: str
+  services:
+    - type: list(http|https|tcp|udp|1c)
+      local_addr: str
+      name: str?
