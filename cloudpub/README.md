@@ -44,6 +44,9 @@ services:
   - type: http
     local_addr: homeassistant:8123
     name: homeassistant
+  - type: tcp
+    local_addr: core-mosquitto:1883 # обратите внимание, используется порт без поддержки SSL
+    name: mqtt
 ```
 
 ### Конфигурация Home Assistant
