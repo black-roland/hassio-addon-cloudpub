@@ -27,6 +27,9 @@ profile cloudpub flags=(attach_disconnected,mediate_deleted) {
   # Access to options.json and other files within your addon
   /data/** rw,
 
+  # Read access to logs
+  /root/.cache/cloudpub/client.log r,
+
   # Start new profile for service
   /usr/bin/clo cx -> clo,
 
