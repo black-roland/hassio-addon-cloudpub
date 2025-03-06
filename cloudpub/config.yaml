@@ -24,6 +24,6 @@ options:
 schema:
   token: str
   services:
-    - type: list(http|https|tcp|udp|1c)
+    - type: list(http|https|tcp|udp|rtsp|1c)
       local_addr: str
       name: str?
