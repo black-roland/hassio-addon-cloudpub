@@ -20,7 +20,7 @@
 
 ```yaml
 token: 7Ml…Ly4
-log_level: info
+clo_log_level: info
 services:
   - type: http
     local_addr: homeassistant:8123
@@ -56,7 +56,7 @@ http:
 Перед тем как обращаться за помощью, попробуйте включить отладочные логи в настройках аддона. Это может помочь быстрее выявить причину проблемы.
 
 ```yaml
-log_level: debug
+clo_log_level: debug
 ```
 
 После этого перезапустите аддон и проверьте логи в интерфейсе Home Assistant.

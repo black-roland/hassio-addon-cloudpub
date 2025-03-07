@@ -33,7 +33,7 @@ for ID in $(bashio::config "services|keys"); do
   bashio::log.info "  - Локальный адрес: ${LOCAL_ADDR}"
 
   # Check if the service is already registered
-  SERVICE_GUID=$(echo "${REGISTERED_SERVICES}" | grep "${LOCAL_ADDR}" | cut -d ':' -f 1)
+  SERVICE_GUID=$(echo "${REGISTERED_SERVICES}" | grep -F "${LOCAL_ADDR}" | cut -d ':' -f 1 || true)
 
   if [ -z "${SERVICE_GUID}" ]; then
     # Service is not registered, registering it
@@ -48,14 +48,14 @@ for ID in $(bashio::config "services|keys"); do
     bashio::log.info "Сервис успешно зарегистрирован."
   else
     ADDON_CONFIG_GUIDS+=("${SERVICE_GUID}")
-    bashio::log.info "Сервис был зарегистрирован ранее."
+    bashio::log.info "Сервис уже зарегистрирован."
   fi
 done
 
 # Remove services that are registered in CloudPub but no longer exist in the add-on configuration
 for GUID in ${REGISTERED_GUIDS}; do
   if [[ ! " ${ADDON_CONFIG_GUIDS[@]} " =~ " ${GUID} " ]]; then
-    bashio::log.info "Удаление сервиса с GUID ${GUID}, так как он был удален из конфигурации аддона."
+    bashio::log.info "Сервис с GUID ${GUID} был удален из конфигурации аддона. Удаление из CloudPub..."
     $CLO unpublish --remove "${GUID}"
     bashio::log.info "Сервис успешно удален."
   fi
