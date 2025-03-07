@@ -21,12 +21,12 @@
       ],
       "datasourceTemplate": "custom.cloudpub",
       "depNameTemplate": "cloudpub",
-      "extractVersionTemplate": "toc-highlight\">(?<version>\\d+\\.\\d+\\.\\d+)"
+      "extractVersionTemplate": "/clo-(?<version>.+)-stable-linux-x86_64\\.tar\\.gz"
     }
   ],
   "customDatasources": {
     "cloudpub": {
-      "defaultRegistryUrlTemplate": "https://cloudpub.ru/docs/changelog",
+      "defaultRegistryUrlTemplate": "https://cloudpub.ru/",
       "format": "html"
     }
   },
