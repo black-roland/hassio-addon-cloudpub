@@ -17,7 +17,7 @@ map:
 stage: experimental
 options:
   token: ""
-  log_level: "info"
+  clo_log_level: "warn"
   services:
     - type: "http"
       local_addr: "homeassistant:8123"
@@ -28,4 +28,4 @@ schema:
     - type: list(http|https|tcp|udp|rtsp|1c)
       local_addr: str
       name: str?
-  log_level: list(error|warn|info|debug)
+  clo_log_level: list(error|warn|info|debug)
