@@ -32,6 +32,7 @@
 
 Огромное спасибо всем, кто поддерживает этот проект:
 
-![Спасибо](https://github.com/user-attachments/assets/9baee183-10e2-4045-869b-967ed0d1f8d0)
+![Спасибо](https://github.com/user-attachments/assets/44d227fd-b929-41c3-a25f-5b438390d41a)
+
 
 
