@@ -6,7 +6,7 @@
 
 LOG_LEVEL=$(bashio::config 'log_level')
 
-CLO="clo --conf /config/client.toml -v --log-level ${LOG_LEVEL}"
+CLO="clo --conf /config/client.toml --log-level ${LOG_LEVEL}"
 
 bashio::log.info "Запуск аддона CloudPub с уровнем логирования: ${LOG_LEVEL}..."
 
@@ -40,4 +40,4 @@ for ID in $(bashio::config "services|keys"); do
 done
 
 bashio::log.info "Запуск CloudPub в фоновом режиме..."
-exec $CLO run
+exec $CLO -v run
