@@ -1,0 +1,47 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "build.yaml$"
+      ],
+      "matchStrings": [
+        "(aarch64|amd64|armv7):\\s[\"']?(?<depName>.*?):(?<currentValue>.*?)[\"']?\\s"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "Dockerfile$"
+      ],
+      "matchStrings": [
+        "ARG CLO_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
+      ],
+      "datasourceTemplate": "custom.cloudpub",
+      "depNameTemplate": "cloudpub",
+      "extractVersionTemplate": "toc-highlight\">(?<version>\\d+\\.\\d+\\.\\d+)"
+    }
+  ],
+  "customDatasources": {
+    "cloudpub": {
+      "defaultRegistryUrlTemplate": "https://cloudpub.ru/docs/changelog",
+      "format": "html"
+    }
+  },
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "groupName": "Add-on base image"
+    },
+    {
+      "matchDatasources": [
+        "custom.cloudpub"
+      ],
+      "groupName": "CloudPub client version"
+    }
+  ]
+}
