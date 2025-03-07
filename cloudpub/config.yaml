@@ -1,6 +1,6 @@
 name: CloudPub Client
 slug: cloudpub
-version: 1.1.4
+version: 1.2.0
 description: >-
   Внешний доступ к Home Assistant и другим локальным ресурсам без «белого» IP (за NAT)
 url: https://github.com/black-roland/hassio-addon-cloudpub
