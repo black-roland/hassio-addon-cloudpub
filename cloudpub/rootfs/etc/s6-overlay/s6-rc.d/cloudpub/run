@@ -8,7 +8,7 @@ LOG_LEVEL=$(bashio::config 'clo_log_level')
 
 CLO="clo --conf /config/client.toml --log-level ${LOG_LEVEL}"
 
-bashio::log.info "Запуск аддона CloudPub с уровнем логирования: ${LOG_LEVEL}..."
+bashio::log.info "Запуск аддона CloudPub..."
 
 TOKEN=$(bashio::config 'token')
 bashio::log.info "Токен загружен из конфигурации."
@@ -16,8 +16,13 @@ bashio::log.info "Токен загружен из конфигурации."
 $CLO set token "$TOKEN"
 bashio::log.info "Аккаунт CloudPub успешно привязан."
 
-SERVICES=$(bashio::config 'services')
+# Get the list of registered services
+REGISTERED_SERVICES=$($CLO ls)
+REGISTERED_GUIDS=$(echo "${REGISTERED_SERVICES}" | cut -d ':' -f 1)
 
+ADDON_CONFIG_GUIDS=()
+
+# Register or update services from the configuration
 for ID in $(bashio::config "services|keys"); do
   TYPE=$(bashio::config "services[${ID}].type")
   LOCAL_ADDR=$(bashio::config "services[${ID}].local_addr")
@@ -27,17 +32,34 @@ for ID in $(bashio::config "services|keys"); do
   bashio::log.info "  - Тип: ${TYPE}"
   bashio::log.info "  - Локальный адрес: ${LOCAL_ADDR}"
 
-  if bashio::var.has_value "${NAME}"; then
-    bashio::log.info "  - Имя: ${NAME}"
-    bashio::log.info "Выполнение команды: ${CLO} register --name ${NAME} ${TYPE} ${LOCAL_ADDR}"
-    $CLO register --name "${NAME}" "${TYPE}" "${LOCAL_ADDR}"
-  else
-    bashio::log.info "Выполнение команды: ${CLO} register ${TYPE} ${LOCAL_ADDR}"
-    $CLO register "${TYPE}" "${LOCAL_ADDR}"
-  fi
+  # Check if the service is already registered
+  SERVICE_GUID=$(echo "${REGISTERED_SERVICES}" | grep "${LOCAL_ADDR}" | cut -d ':' -f 1)
 
-  bashio::log.info "Сервис успешно зарегистрирован."
+  if [ -z "${SERVICE_GUID}" ]; then
+    # Service is not registered, registering it
+    if bashio::var.has_value "${NAME}"; then
+      bashio::log.info "  - Имя: ${NAME}"
+      bashio::log.info "Выполнение команды: ${CLO} register --name ${NAME} ${TYPE} ${LOCAL_ADDR}"
+      $CLO register --name "${NAME}" "${TYPE}" "${LOCAL_ADDR}"
+    else
+      bashio::log.info "Выполнение команды: ${CLO} register ${TYPE} ${LOCAL_ADDR}"
+      $CLO register "${TYPE}" "${LOCAL_ADDR}"
+    fi
+    bashio::log.info "Сервис успешно зарегистрирован."
+  else
+    ADDON_CONFIG_GUIDS+=("${SERVICE_GUID}")
+    bashio::log.info "Сервис был зарегистрирован ранее."
+  fi
 done
 
-bashio::log.info "Запуск CloudPub в фоновом режиме..."
+# Remove services that are registered in CloudPub but no longer exist in the add-on configuration
+for GUID in ${REGISTERED_GUIDS}; do
+  if [[ ! " ${ADDON_CONFIG_GUIDS[@]} " =~ " ${GUID} " ]]; then
+    bashio::log.info "Удаление сервиса с GUID ${GUID}, так как он был удален из конфигурации аддона."
+    $CLO unpublish --remove "${GUID}"
+    bashio::log.info "Сервис успешно удален."
+  fi
+done
+
+bashio::log.info "Запуск клиента CloudPub..."
 exec $CLO -v run
