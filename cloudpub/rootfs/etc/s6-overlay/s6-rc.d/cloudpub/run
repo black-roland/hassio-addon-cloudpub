@@ -4,9 +4,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-CLO="clo --conf /config/client.toml --log-level info"
+LOG_LEVEL=$(bashio::config 'log_level')
 
-bashio::log.info "Запуск аддона CloudPub..."
+CLO="clo --conf /config/client.toml -v --log-level ${LOG_LEVEL}"
+
+bashio::log.info "Запуск аддона CloudPub с уровнем логирования: ${LOG_LEVEL}..."
 
 TOKEN=$(bashio::config 'token')
 bashio::log.info "Токен загружен из конфигурации."

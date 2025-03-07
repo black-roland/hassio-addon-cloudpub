@@ -3,6 +3,10 @@ configuration:
     name: Токен
     description: >-
       Токен для привязки клиента CloudPub к вашему аккаунту. Укажите только токен, без команды `./clo set token ` в начале.
+  log_level:
+    name: Уровень логирования
+    description: >-
+      Уровень логирования для клиента CloudPub.
   services:
     name: Публикации
     description: >-

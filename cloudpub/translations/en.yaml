@@ -3,6 +3,10 @@ configuration:
     name: Token
     description: >-
       Token for binding the CloudPub client to your account. Provide only the token, without the `./clo set token ` command.
+  log_level:
+    name: Log Level
+    description: >-
+      Logging level for the CloudPub client.
   services:
     name: Publications
     description: >-
