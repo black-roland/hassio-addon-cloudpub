@@ -11,7 +11,7 @@ ARG BUILD_ARCH=amd64
 ARG CLO_VERSION="1.4.86"
 
 RUN \
-    if [ "${BUILD_ARCH}" = "aarch64" ]; then CLO_ARCH="arm"; \
+    if [ "${BUILD_ARCH}" = "aarch64" ]; then CLO_ARCH="aarch64"; \
     elif [ "${BUILD_ARCH}" = "amd64" ]; then CLO_ARCH="x86_64"; \
     elif [ "${BUILD_ARCH}" = "armv7" ]; then CLO_ARCH="arm"; fi \
     && cd /usr/bin \

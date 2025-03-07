@@ -48,18 +48,16 @@ profile cloudpub flags=(attach_disconnected,mediate_deleted) {
 
     # Access required for service functionality
     /{bin,usr/bin}/{bash,echo} rix,
-    /etc/{passwd,nsswitch.conf,hosts,resolv.conf,host.conf} r,
+    /etc/{passwd,group,nsswitch.conf,hosts,resolv.conf,host.conf} r,
     /dev/tty rw,
 
     # Allow access to /root/.cache/
     /root/.cache/ rw,
     /root/.cache/** rwk,
 
-    # Allow access to /proc/[pid]/cgroup
-    /proc/[0-9]*/cgroup r,
-
-    # Allow access to /sys/fs/cgroup/cpu.max
-    /sys/fs/cgroup/cpu.max r,
+    # Allow access to resources required by the Tokio runtime
+    /sys/{,**} r,
+    /proc/{,**} r,
 
     # Allow access to SSL certificates
     /etc/ssl/certs/** r,
