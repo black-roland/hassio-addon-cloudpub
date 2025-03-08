@@ -1,0 +1,34 @@
+#!/command/with-contenv bashio
+
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+readonly LOG_FILE="/root/.cache/cloudpub/client.log"
+
+# Handle AuthFailed errors to prevent infinite restarts.
+if grep -q "AuthFailed" "${LOG_FILE}" 2>/dev/null; then
+  bashio::log.error "Обнаружена ошибка: Неверный ключ API."
+  echo 1 > /run/s6-linux-init-container-results/exitcode
+  exec /run/s6/basedir/bin/halt
+fi
+
+readonly EXIT_CODE_CONTAINER=$(</run/s6-linux-init-container-results/exitcode)
+readonly EXIT_CODE_SERVICE="${1}"
+readonly EXIT_CODE_SIGNAL="${2}"
+readonly SERVICE="clo"
+
+bashio::log.info "Сервис ${SERVICE} завершил работу с кодом ${EXIT_CODE_SERVICE} (сигнал: ${EXIT_CODE_SIGNAL})"
+
+# Handle exit codes
+if [[ "${EXIT_CODE_SERVICE}" -eq 256 ]]; then
+  if [[ "${EXIT_CODE_CONTAINER}" -eq 0 ]]; then
+    echo $((128 + EXIT_CODE_SIGNAL)) > /run/s6-linux-init-container-results/exitcode
+  fi
+  [[ "${EXIT_CODE_SIGNAL}" -eq 15 ]] && exec /run/s6/basedir/bin/halt
+elif [[ "${EXIT_CODE_SERVICE}" -ne 0 ]]; then
+  if [[ "${EXIT_CODE_CONTAINER}" -eq 0 ]]; then
+    echo "${EXIT_CODE_SERVICE}" > /run/s6-linux-init-container-results/exitcode
+  fi
+  exec /run/s6/basedir/bin/halt
+fi

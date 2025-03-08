@@ -4,11 +4,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+bashio::log.info "Запуск аддона CloudPub..."
+
 LOG_LEVEL=$(bashio::config 'clo_log_level')
 
 CLO="clo --conf /config/client.toml --log-level ${LOG_LEVEL}"
-
-bashio::log.info "Запуск аддона CloudPub..."
 
 TOKEN=$(bashio::config 'token')
 bashio::log.info "Токен загружен из конфигурации."
@@ -16,13 +16,13 @@ bashio::log.info "Токен загружен из конфигурации."
 $CLO set token "$TOKEN"
 bashio::log.info "Аккаунт CloudPub успешно привязан."
 
-# Get the list of registered services
+# Retrieve the list of currently registered services from CloudPub
 REGISTERED_SERVICES=$($CLO ls)
 REGISTERED_GUIDS=$(echo "${REGISTERED_SERVICES}" | cut -d ':' -f 1)
 
 ADDON_CONFIG_GUIDS=()
 
-# Register or update services from the configuration
+# Register or update services based on the add-on configuration
 for ID in $(bashio::config "services|keys"); do
   TYPE=$(bashio::config "services[${ID}].type")
   LOCAL_ADDR=$(bashio::config "services[${ID}].local_addr")
@@ -32,11 +32,11 @@ for ID in $(bashio::config "services|keys"); do
   bashio::log.info "  - Тип: ${TYPE}"
   bashio::log.info "  - Локальный адрес: ${LOCAL_ADDR}"
 
-  # Check if the service is already registered
+  # Check if the service is already registered in CloudPub
   SERVICE_GUID=$(echo "${REGISTERED_SERVICES}" | grep -F "${LOCAL_ADDR}" | cut -d ':' -f 1 || true)
 
   if [ -z "${SERVICE_GUID}" ]; then
-    # Service is not registered, registering it
+    # Service is not registered, so register it with CloudPub
     if bashio::var.has_value "${NAME}"; then
       bashio::log.info "  - Имя: ${NAME}"
       bashio::log.info "Выполнение команды: ${CLO} register --name ${NAME} ${TYPE} ${LOCAL_ADDR}"
@@ -52,7 +52,7 @@ for ID in $(bashio::config "services|keys"); do
   fi
 done
 
-# Remove services that are registered in CloudPub but no longer exist in the add-on configuration
+# Remove services from CloudPub that are no longer defined in the add-on configuration
 for GUID in ${REGISTERED_GUIDS}; do
   if [[ ! " ${ADDON_CONFIG_GUIDS[@]} " =~ " ${GUID} " ]]; then
     bashio::log.info "Сервис с GUID ${GUID} был удален из конфигурации аддона. Удаление из CloudPub..."
