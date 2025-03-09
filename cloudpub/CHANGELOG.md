@@ -4,7 +4,7 @@
 
 ### Добавлено
 
-- Добавлен watchdog, который автоматически перезапускает клиент CloudPub в случае ошибки инициализации data channel. Ошибка `WebSocket protocol error: Connection reset without closing handshake` может возникать при обрыве интернет-соединения.
+- Добавлен watchdog, который автоматически перезапускает клиент CloudPub в случае ошибки инициализации data channel. Ошибка `WebSocket protocol error: Connection reset without closing handshake` может возникать при обрыве интернет-соединения ([issue в upstream](https://github.com/ermakus/cloudpub/issues/3)).
 
 ## [1.3.0] - 2025-03-08
 
