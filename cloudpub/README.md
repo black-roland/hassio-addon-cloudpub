@@ -32,4 +32,4 @@
 
 Огромное спасибо всем, кто поддерживает этот проект:
 
-![Спасибо](https://github.com/user-attachments/assets/8ddf7dab-76ae-4cb1-b4aa-6a7b4e50e1e4)
+![Спасибо](https://github.com/user-attachments/assets/b1a2f987-de68-4408-b389-29e9646ef93f)
