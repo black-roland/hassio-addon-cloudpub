@@ -13,7 +13,9 @@ ARG CLO_VERSION="1.4.86"
 RUN \
     if [ "${BUILD_ARCH}" = "aarch64" ]; then CLO_ARCH="aarch64"; \
     elif [ "${BUILD_ARCH}" = "amd64" ]; then CLO_ARCH="x86_64"; \
-    elif [ "${BUILD_ARCH}" = "armv7" ]; then CLO_ARCH="arm"; fi \
+    elif [ "${BUILD_ARCH}" = "armhf" ]; then CLO_ARCH="arm"; \
+    elif [ "${BUILD_ARCH}" = "armv7" ]; then CLO_ARCH="arm"; \
+    elif [ "${BUILD_ARCH}" = "i386" ]; then CLO_ARCH="i686"; fi \
     && cd /usr/bin \
     && curl -L "https://cloudpub.ru/download/stable/clo-${CLO_VERSION}-stable-linux-${CLO_ARCH}.tar.gz" | tar -x -z \
     && chmod +x /usr/bin/clo
