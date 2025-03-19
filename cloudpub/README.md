@@ -1,5 +1,10 @@
 # Home Assistant Add-on: CloudPub
 
+![Последняя версия][latest-version-shield]
+![Активных инсталляций][reported-installations-shield]
+![Скачиваний в неделю][weekly-downloads-shield]
+[![На кофе][donate-shield]][donate-link]
+
 Этот аддон предоставляет внешний доступ к Home Assistant и другим локальным ресурсам за NAT без «белого» IP. Это неофициальное дополнение для сервиса [CloudPub](https://cloudpub.ru/), который является альтернативой KeenDNS, Dataplicity, Ngrok, Cloudflared и другим подобным сервисам.
 
 ## Ключевые особенности
@@ -32,4 +37,11 @@
 
 Огромное спасибо всем, кто поддерживает этот проект:
 
-![Спасибо](https://github.com/user-attachments/assets/b1a2f987-de68-4408-b389-29e9646ef93f)
+![Спасибо][donors-list]
+
+[latest-version-shield]: https://img.shields.io/github/package-json/v/black-roland/hassio-addon-cloudpub?filename=cloudpub%2Fconfig.json&style=flat-square&label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F
+[reported-installations-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Faddons.json&query=6cd8d65a_cloudpub.total&style=flat-square&label=%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D1%85%20%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%BB%D0%BB%D1%8F%D1%86%D0%B8%D0%B9&color=brightgreen&cacheSeconds=86400
+[weekly-downloads-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmansmarthome.info%2Fgithub%2Fblack-roland%2Fhassio-addon-cloudpub%2Ftraffic.json&query=weekly.uniques&suffix=%20%D0%B2%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%BB%D1%8E&style=flat-square&label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&color=brightgreen&cacheSeconds=86400
+[donate-shield]: https://img.shields.io/badge/%D0%BD%D0%B0%20%D0%BA%D0%BE%D1%84%D0%B5-cc3336?style=flat-square&logo=coffeescript
+[donate-link]: https://mansmarthome.info/donate/#donationalerts
+[donors-list]: https://github.com/user-attachments/assets/b1a2f987-de68-4408-b389-29e9646ef93f
