@@ -44,4 +44,4 @@
 [weekly-downloads-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmansmarthome.info%2Fgithub%2Fblack-roland%2Fhassio-addon-cloudpub%2Ftraffic.json&query=weekly.uniques&suffix=%20%D0%B2%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%BB%D1%8E&style=flat-square&label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&color=brightgreen&cacheSeconds=86400
 [donate-shield]: https://img.shields.io/badge/%D0%BD%D0%B0%20%D0%BA%D0%BE%D1%84%D0%B5-cc3336?style=flat-square&logo=coffeescript
 [donate-link]: https://mansmarthome.info/donate/#donationalerts
-[donors-list]: https://github.com/user-attachments/assets/b1a2f987-de68-4408-b389-29e9646ef93f
+[donors-list]: https://github.com/user-attachments/assets/468bccf2-f620-4309-bc7b-1aa83c9cf9df
