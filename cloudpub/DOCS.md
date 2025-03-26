@@ -4,7 +4,7 @@
 
 ### Получение токена
 
-Токен можно получить в [панели управления CloudPub](https://cloudpub.ru/dashboard/). Скопируйте только сам токен, без команды `./clo set token ` в начале.
+Токен (ключ API) можно получить в [панели управления CloudPub](https://cloudpub.ru/dashboard/) (раздел «Привяжите приложение к аккаунту»). Скопируйте только сам токен, без команды `./clo set token ` в начале.
 
 ### Конфигурация аддона
 
@@ -79,4 +79,4 @@ http:
 
 Если проблема не решена, вы можете:
 - [Создать issue на GitHub](https://github.com/black-roland/hassio-addon-cloudpub/issues). Пожалуйста, приложите логи и описание проблемы.
-- Задать вопрос в [Telegram-чате](https://t.me/mansmarthome/236?comment=1).
+- Задать вопрос в [Telegram-чате](https://t.me/mansmarthome/236).
