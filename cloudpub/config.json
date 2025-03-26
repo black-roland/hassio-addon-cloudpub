@@ -15,7 +15,7 @@
     "i386"
   ],
   "advanced": false,
-  "stage": "experimental",
+  "stage": "stable",
   "map": [
     {
       "type": "addon_config",
