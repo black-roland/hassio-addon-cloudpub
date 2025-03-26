@@ -11,6 +11,8 @@ LOG_LEVEL=$(bashio::config 'clo_log_level')
 CLO="clo --conf /config/client.toml --log-level ${LOG_LEVEL}"
 
 TOKEN=$(bashio::config 'token')
+# Strip "./clo set token " prefix from the string if it exists
+TOKEN=${TOKEN#"./clo set token "}
 bashio::log.info "Токен загружен из конфигурации."
 
 $CLO set token "$TOKEN"

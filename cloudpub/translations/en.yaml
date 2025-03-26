@@ -2,7 +2,7 @@ configuration:
   token:
     name: Token
     description: >-
-      Token for binding the CloudPub client to your account. Provide only the token, without the `./clo set token ` command.
+      Token for binding the CloudPub client to your account.
   services:
     name: Publications
     description: >-
