@@ -14,13 +14,14 @@
     "armv7",
     "i386"
   ],
+  "advanced": false,
+  "stage": "experimental",
   "map": [
     {
       "type": "addon_config",
       "read_only": false
     }
   ],
-  "stage": "experimental",
   "options": {
     "token": "",
     "clo_log_level": "warn",
