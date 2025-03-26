@@ -41,7 +41,7 @@ http:
     - 172.30.33.0/24
 ```
 
-Файл `configuration.yaml` можно отредактировать с помощью аддона File Editor, который можно установить в разделе [Настройки → Дополнения](https://my.home-assistant.io/create-link/?redirect=supervisor_store).
+Файл `configuration.yaml` можно отредактировать через аддон File Editor (устанавливается в разделе [Настройки → Дополнения](https://my.home-assistant.io/create-link/?redirect=supervisor_store)). Если настройки `http` уже были указаны ранее, то просто добавьте в существующий блок параметры `use_x_forwarded_for` и `trusted_proxies`.
 
 > [!NOTE]
 > После изменения `configuration.yaml` перезапустите Home Assistant, чтобы применить настройки.
@@ -66,19 +66,49 @@ clo_log_level: debug
 
 ### Ошибка `400: Bad Request`
 
-Если вы получаете ошибку `400: Bad Request` при попытке открыть ссылку в CloudPub, возможно, не применилась конфигурация `trusted_proxies`. Убедитесь, что вы добавили следующие строки в ваш `configuration.yaml`:
+#### Проблема с конфигурацией `trusted_proxies`
+
+Если вы получаете ошибку `400: Bad Request` при попытке открыть ссылку в CloudPub, то возможно, не применилась конфигурация `trusted_proxies`. Убедитесь, что в `configuration.yaml` есть следующие строки:
 
 ```yaml
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 172.16.0.0/12
-    - 10.0.0.0/8
-    - 192.168.0.0/16
-    - 127.0.0.0/8
+    - 172.30.33.0/24
 ```
 
-После внесения изменений **перезагрузите систему**.
+После внесения изменений перезагрузите систему.
+
+#### Дублирование блока `http`
+
+Пожалуйста, просмотрите конфигурационные файлы Home Assistant:
+
+- Найдите все вхождения `http:`;
+- Если их несколько — объедините настройки в один блок;
+- Удалите лишние объявления.
+
+### Совместимость с Dataplicity
+
+Интеграция с Dataplicity использует [манкипатчинг](https://github.com/AlexxIT/Dataplicity/blob/d7c195d8a754ba0cdfbeee9954db3f14086ab3a3/custom_components/dataplicity/utils.py#L28-L51) для изменения списка `trusted_proxies`, что может помешать работе CloudPub и других аддонов.
+
+Попробуйте удалить Dataplicity, если проявляются следующие симптомы:
+
+1. Ошибка `400: Bad Request` при обращении к Home Assistant через CloudPub.
+1. Ошибка `Received X-Forwarded-For header from an untrusted proxy 172.30.33.x` в журналах Home Assistant.
+1. Настройки `trusted_proxies` из `configuration.yaml` игнорируются, так как Dataplicity их перезаписывает.
+
+Если в вашем случае ошибок не возникает и вы планируете использовать CloudPub совместно с Dataplicity, то дополнительно добавьте `127.0.0.1/32` в `trusted_proxies`:
+
+```yaml
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.0/24 # доступ для CloudPub и других аддонов
+    - 127.0.0.1/32   # для Dataplicity
+```
+
+> [!WARNING]
+> При появлении ошибок доступа удалите Dataplicity.
 
 ### Обратитесь за помощью
 
