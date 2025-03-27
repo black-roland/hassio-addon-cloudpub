@@ -44,6 +44,6 @@
 [maintenance-shield]: https://img.shields.io/maintenance/%D0%B4%D0%B0/2025?style=flat-square&label=%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%B2%D0%B0%D0%B5%D1%82%D1%81%D1%8F%3F
 [reported-installations-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Faddons.json&query=6cd8d65a_cloudpub.total&style=flat-square&label=%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9&color=brightgreen&cacheSeconds=86400
 [weekly-downloads-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmansmarthome.info%2Fgithub%2Fblack-roland%2Fhassio-addon-cloudpub%2Ftraffic.json&query=weekly.uniques&suffix=%20%D0%B2%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%BB%D1%8E&style=flat-square&label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&color=brightgreen&cacheSeconds=86400
-[donate-shield]: https://img.shields.io/badge/%D0%B4%D0%BE%D0%BD%D0%B0%D1%82-%D0%BD%D0%B0%20%D0%BA%D0%BE%D1%84%D0%B5-403935?style=flat-square&logo=coffeescript&labelColor=cc3336
+[donate-shield]: https://img.shields.io/badge/%D0%B4%D0%BE%D0%BD%D0%B0%D1%82-%D0%BD%D0%B0%20%D0%BA%D0%BE%D1%84%D0%B5-cc3336?style=flat-square&logo=coffeescript&labelColor=a67b5b
 [donate-link]: https://mansmarthome.info/donate/#donationalerts
-[donors-list]: https://github.com/user-attachments/assets/468bccf2-f620-4309-bc7b-1aa83c9cf9df
+[donors-list]: https://github.com/user-attachments/assets/e18ac0d1-6fdc-4d8c-b1ca-0497b08b53e2
