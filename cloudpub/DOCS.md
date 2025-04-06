@@ -72,7 +72,7 @@ http:
 
 Если ошибка сохраняется, убедитесь, что `configuration.yaml` правильно структурирован. Особенно важно следить за правильностью отступов в YAML. Для валидации конфига можно использовать:
 - Встроенный валидатор Home Assistant (Панель разработчика → YAML → Проверить конфигурацию);
-- [Онлайн-валидаторы YAML](yamllint.com);
+- [Онлайн-валидаторы YAML](https://yamllint.com/);
 - [Studio Code Server](https://github.com/hassio-addons/addon-vscode) с плагинами для валидации YAML.
 
 #### Дублирование блока `http`
@@ -97,8 +97,8 @@ http:
 Однако учтите, что интеграция с Dataplicity использует [манкипатчинг](https://github.com/AlexxIT/Dataplicity/blob/d7c195d8a754ba0cdfbeee9954db3f14086ab3a3/custom_components/dataplicity/utils.py#L28-L51) для изменения списка `trusted_proxies`, что гипотетически может привести к конфликтам.
 
 Признаки проблем:
-1. Ошибка `400: Bad Request` при обращении к Home Assistant через CloudPub
-2. Ошибка `Received X-Forwarded-For header from an untrusted proxy 172.30.33.x` в журналах
+1. Ошибка `400: Bad Request` при обращении к Home Assistant через CloudPub;
+2. Ошибка `Received X-Forwarded-For header from an untrusted proxy 172.30.33.x` в журналах.
 
 При появлении таких ошибок рекомендуется удалить Dataplicity.
 
