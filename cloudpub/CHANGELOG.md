@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Изменено
+
+- Базовый Docker-образ (ghcr.io/hassio-addons/debian-base) обновлён до версии 7.8.1.
+
 ## [1.5.0] - 2025-03-26
 
 ### Добавлено
