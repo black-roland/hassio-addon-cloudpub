@@ -23,7 +23,7 @@ bashio::log.info "Аккаунт CloudPub успешно привязан."
 
 # Retrieve the list of currently registered services from CloudPub
 REGISTERED_SERVICES=$($CLO ls)
-REGISTERED_GUIDS=$(echo "${REGISTERED_SERVICES}" | cut -d ':' -f 1)
+REGISTERED_GUIDS=$(echo "${REGISTERED_SERVICES}" | grep -Eo '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' || true)
 
 ADDON_CONFIG_GUIDS=()
 
@@ -38,7 +38,7 @@ for ID in $(bashio::config "services|keys"); do
   bashio::log.info "  - Локальный адрес: ${LOCAL_ADDR}"
 
   # Check if the service is already registered in CloudPub
-  SERVICE_GUID=$(echo "${REGISTERED_SERVICES}" | grep -F "${LOCAL_ADDR}" | cut -d ':' -f 1 || true)
+  SERVICE_GUID=$(echo "${REGISTERED_SERVICES}" | grep -F "${LOCAL_ADDR}" | grep -Eo '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' || true)
 
   if [ -z "${SERVICE_GUID}" ]; then
     # Service is not registered, so register it with CloudPub
