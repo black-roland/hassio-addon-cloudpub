@@ -13,6 +13,9 @@ CLO="clo --conf /config/client.toml --log-level ${LOG_LEVEL}"
 TOKEN=$(bashio::config 'token')
 # Strip "./clo set token " prefix from the string if it exists
 TOKEN=${TOKEN#"./clo set token "}
+if [ -z "$TOKEN" ]; then
+  bashio::exit.nok "Необходимо указать токен для работы CloudPub."
+fi
 bashio::log.info "Токен загружен из конфигурации."
 
 $CLO set token "$TOKEN"
