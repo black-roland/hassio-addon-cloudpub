@@ -6,6 +6,10 @@
 
 - Клиент CloudPub [обновлён до версии **1.5.190**](https://cloudpub.ru/docs/changelog#15190-09-%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F-2025).
 
+### Удалено
+
+- «Костыль» для правильной обработки exit code больше не требуется — [исправлено в CloudPub 1.5.190](https://github.com/ermakus/cloudpub/issues/2#event-17187071334).
+
 ## [1.6.1] - 2025-04-08
 
 ### Изменено
