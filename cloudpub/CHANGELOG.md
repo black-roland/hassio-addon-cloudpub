@@ -8,7 +8,8 @@
 
 ### Удалено
 
-- «Костыль» для правильной обработки exit code больше не требуется — [исправлено в CloudPub 1.5.190](https://github.com/ermakus/cloudpub/issues/2#event-17187071334).
+- «Костыль» для корректной обработки exit code больше не требуется — [исправлено в CloudPub 1.5.190](https://github.com/ermakus/cloudpub/issues/2#event-17187071334).
+- Watchdog, добавленный в версии 1.4.0 больше не требуется — клиент теперь [корректно переподключается при потери соединения с интернетом](https://github.com/ermakus/cloudpub/issues/3#event-17187073714).
 
 ## [1.6.1] - 2025-04-08
 
