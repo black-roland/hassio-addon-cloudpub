@@ -9,16 +9,6 @@ EXIT_CODE_SERVICE="${1}"
 EXIT_CODE_SIGNAL="${2}"
 readonly SERVICE="clo"
 
-# Workaround for control channel errors since clo exits with code 0
-# even when errors occur: https://github.com/ermakus/cloudpub/issues/2
-if [[ "${EXIT_CODE_SERVICE}" -eq 0 ]]; then
-  readonly LOG_FILE="/root/.cache/cloudpub/client.log"
-  if grep -q "Control channel error" "${LOG_FILE}" 2>/dev/null; then
-    bashio::log.error "Обнаружена ошибка: Control channel error."
-    EXIT_CODE_SERVICE=1
-  fi
-fi
-
 bashio::log.info "Сервис ${SERVICE} завершил работу с кодом ${EXIT_CODE_SERVICE} (сигнал: ${EXIT_CODE_SIGNAL})"
 
 # Handle exit codes
