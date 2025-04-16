@@ -4,7 +4,7 @@
 
 ### Получение токена
 
-Токен (ключ API) можно получить в [панели управления CloudPub](https://cloudpub.ru/dashboard/) в разделе «Привяжите приложение к аккаунту». Вы можете скопировать как сам токен, так и всю команду `./clo set token <токен>` целиком.
+Токен (API-ключ) можно получить в [панели управления CloudPub](https://cloudpub.ru/dashboard/) в разделе «Привяжите приложение к аккаунту». Вы можете скопировать как сам токен, так и всю команду `./clo set token <токен>` целиком.
 
 ### Конфигурация аддона
 
@@ -28,6 +28,9 @@ services:
     local_addr: core-mosquitto:1883 # обратите внимание, используется порт без поддержки SSL
     name: mqtt
 ```
+
+> [!TIP]
+> Если вы используете CloudPub впервые, лучше начать с минимальной конфигурации для проверки работы (оставьте только `homeassistant`).
 
 ### Конфигурация Home Assistant
 
@@ -84,7 +87,7 @@ http:
 
 ### Совместимость с Dataplicity
 
-CloudPub можно использовать совместно с Dataplicity. Для этого добавьте `127.0.0.1/32` в `trusted_proxies`:
+CloudPub можно использовать совместно с интеграцией Dataplicity. Для этого добавьте `127.0.0.1/32` в `trusted_proxies`:
 
 ```yaml
 http:
@@ -94,9 +97,7 @@ http:
     - 127.0.0.1/32   # для Dataplicity
 ```
 
-Однако учтите, что интеграция с Dataplicity использует [манкипатчинг](https://github.com/AlexxIT/Dataplicity/blob/d7c195d8a754ba0cdfbeee9954db3f14086ab3a3/custom_components/dataplicity/utils.py#L28-L51) для изменения списка `trusted_proxies`, что гипотетически может привести к конфликтам.
-
-Признаки проблем:
+Гипотетически CloudPub и Dataplicity могут конфликтовать. Признаки проблем:
 1. Ошибка `400: Bad Request` при обращении к Home Assistant через CloudPub;
 2. Ошибка `Received X-Forwarded-For header from an untrusted proxy 172.30.33.x` в журналах.
 
@@ -115,5 +116,5 @@ clo_log_level: debug
 ### Обратитесь за помощью
 
 Если проблема не решена, вы можете:
-- [Создать issue на GitHub](https://github.com/black-roland/hassio-addon-cloudpub/issues). Пожалуйста, приложите логи и описание проблемы.
+- Задать вопрос в [Discussions на GitHub](https://github.com/black-roland/hassio-addon-cloudpub/discussions/new?category=support). Пожалуйста, приложите логи и описание проблемы.
 - Задать вопрос в [Telegram-чате](https://t.me/mansmarthome/236).
