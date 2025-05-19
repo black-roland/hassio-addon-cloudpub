@@ -21,16 +21,19 @@
 token: 7Ml…Ly4 # или просто "./clo set token 7Ml…Ly4"
 clo_log_level: info
 services:
-  - type: http
+  - name: homeassistant
+    type: http
     local_addr: homeassistant:8123
-    name: homeassistant
-  - type: tcp
-    local_addr: core-mosquitto:1883 # обратите внимание, используется порт без поддержки SSL
-    name: mqtt
+  - name: mqtt
+    type: tcp
+    local_addr: core-mosquitto:1883 # в примере используется порт без поддержки SSL
+  - name: router
+    type: http
+    local_addr: 192.168.1.1:80 # IP-адрес и порт веб-интерфейса роутера может отличаться
 ```
 
 > [!TIP]
-> Если вы используете CloudPub впервые, лучше начать с минимальной конфигурации для проверки работы (оставьте только `homeassistant`).
+> Если вы используете аддон CloudPub впервые, то лучше начать с минимальной конфигурации: оставьте только `homeassistant`.
 
 ### Конфигурация Home Assistant
 
