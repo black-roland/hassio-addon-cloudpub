@@ -32,7 +32,7 @@
 
 ## Поддержка автора
 
-Если этот аддон оказался полезным, вы можете [угостить автора чашечкой кофе](https://mansmarthome.info/donate/#donationalerts). Ваша благодарность ценится!
+Если этот аддон оказался полезным, вы можете [угостить автора чашечкой кофе](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#donationalerts). Ваша благодарность ценится!
 
 #### Благодарности
 
