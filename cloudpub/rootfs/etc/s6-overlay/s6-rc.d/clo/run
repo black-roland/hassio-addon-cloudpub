@@ -45,9 +45,11 @@ for ID in $(bashio::config "services|keys"); do
     if bashio::var.has_value "${NAME}"; then
       bashio::log.info "  - Имя: ${NAME}"
       bashio::log.info "Выполнение команды: ${CLO} register --name ${NAME} ${TYPE} ${LOCAL_ADDR}"
+      sleep 1
       $CLO register --name "${NAME}" "${TYPE}" "${LOCAL_ADDR}"
     else
       bashio::log.info "Выполнение команды: ${CLO} register ${TYPE} ${LOCAL_ADDR}"
+      sleep 1
       $CLO register "${TYPE}" "${LOCAL_ADDR}"
     fi
     bashio::log.info "Сервис успешно зарегистрирован."
