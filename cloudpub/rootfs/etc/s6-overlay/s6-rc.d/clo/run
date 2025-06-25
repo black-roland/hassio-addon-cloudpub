@@ -24,6 +24,7 @@ bashio::log.info "Аккаунт CloudPub успешно привязан."
 # Retrieve the list of currently registered services from CloudPub
 REGISTERED_SERVICES=$($CLO ls)
 REGISTERED_GUIDS=$(echo "${REGISTERED_SERVICES}" | grep -Eo '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' || true)
+sleep 1
 
 ADDON_CONFIG_GUIDS=()
 

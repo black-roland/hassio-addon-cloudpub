@@ -9,6 +9,9 @@ EXIT_CODE_SERVICE="${1}"
 EXIT_CODE_SIGNAL="${2}"
 readonly SERVICE="clo"
 
+readonly LOG_FILE="/root/.cache/cloudpub/client.log"
+readonly CONN_ERROR_MESSAGE="WebSocket error: IO error: Connection reset by peer"
+
 bashio::log.info "Сервис ${SERVICE} завершил работу с кодом ${EXIT_CODE_SERVICE} (сигнал: ${EXIT_CODE_SIGNAL})"
 
 # Handle exit codes
@@ -18,8 +21,15 @@ if [[ "${EXIT_CODE_SERVICE}" -eq 256 ]]; then
   fi
   [[ "${EXIT_CODE_SIGNAL}" -eq 15 ]] && exec /run/s6/basedir/bin/halt
 elif [[ "${EXIT_CODE_SERVICE}" -ne 0 ]]; then
-  if [[ "${EXIT_CODE_CONTAINER}" -eq 0 ]]; then
-    echo "${EXIT_CODE_SERVICE}" > /run/s6-linux-init-container-results/exitcode
+  if grep -q "${CONN_ERROR_MESSAGE}" "${LOG_FILE}"; then
+    bashio::log.info "Ошибка сети: клиент будет перезапущен..."
+
+    # Cleanup logs to avoid restart loops
+    > "${LOG_FILE}"
+  else
+    if [[ "${EXIT_CODE_CONTAINER}" -eq 0 ]]; then
+      echo "${EXIT_CODE_SERVICE}" > /run/s6-linux-init-container-results/exitcode
+    fi
+    exec /run/s6/basedir/bin/halt
   fi
-  exec /run/s6/basedir/bin/halt
 fi
