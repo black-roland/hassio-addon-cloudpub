@@ -21,13 +21,13 @@
       ],
       "datasourceTemplate": "custom.cloudpub",
       "depNameTemplate": "cloudpub",
-      "extractVersionTemplate": "^version\\s*=\\s*\"(?<version>.+?)\""
+      "extractVersionTemplate": "/clo-(?<version>.+)-stable-linux-x86_64\\.tar\\.gz"
     }
   ],
   "customDatasources": {
     "cloudpub": {
-      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/ermak-dev/cloudpub/master/client/Cargo.toml",
-      "format": "plain"
+      "defaultRegistryUrlTemplate": "https://cloudpub.ru/",
+      "format": "html"
     }
   },
   "packageRules": [
