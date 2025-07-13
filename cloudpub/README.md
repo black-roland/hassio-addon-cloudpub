@@ -1,10 +1,10 @@
 # Home Assistant Add-on: CloudPub
 
 ![Последняя версия][latest-version-shield]
-![Проект поддерживается?][maintenance-shield]
 ![Активных инсталляций][reported-installations-shield]
 ![Скачиваний в неделю][weekly-downloads-shield]
-[![На кофе][donate-shield]][donate-link]
+[![Отблагодарить за проделанную работу][donate-shield]][donate-link]
+[![Обеспечить регулярные обновления][sponsor-shield]][sponsor-link]
 
 Этот аддон предоставляет внешний доступ к Home Assistant и другим локальным ресурсам за NAT без «белого» IP. Это неофициальное дополнение для сервиса [CloudPub](https://cloudpub.ru/), который является альтернативой KeenDNS, Dataplicity, Ngrok, Cloudflared и другим подобным сервисам.
 
@@ -47,11 +47,10 @@
 Данный аддон не является официальным продуктом CloudPub и не поддерживается его командой.
 
 [latest-version-shield]: https://img.shields.io/github/package-json/v/black-roland/hassio-addon-cloudpub?filename=cloudpub%2Fconfig.json&style=flat-square&label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F&cacheSeconds=86400
-[maintenance-shield]: https://img.shields.io/maintenance/%D0%B4%D0%B0/2025?style=flat-square&label=%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%B2%D0%B0%D0%B5%D1%82%D1%81%D1%8F%3F
 [reported-installations-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Faddons.json&query=6cd8d65a_cloudpub.total&style=flat-square&label=%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9&color=brightgreen&cacheSeconds=86400
 [weekly-downloads-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmansmarthome.info%2Fgithub%2Fblack-roland%2Fhassio-addon-cloudpub%2Ftraffic.json&query=weekly.uniques&suffix=%20%D0%B2%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%BB%D1%8E&style=flat-square&label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&color=brightgreen&cacheSeconds=86400
-[donate-shield]: https://img.shields.io/badge/%D0%B4%D0%BE%D0%BD%D0%B0%D1%82-%D0%BD%D0%B0%20%D0%BA%D0%BE%D1%84%D0%B5-cc3336?style=flat-square&logo=coffeescript&labelColor=a67b5b
-[donate-link]: https://mansmarthome.info/donate/#donationalerts
+[donate-shield]: https://img.shields.io/badge/%E2%98%95_%D0%A0%D0%B0%D0%B7%D0%BE%D0%B2%D0%BE-%D0%AEMoney-8A2BE2?style=flat-square
+[donate-link]: https://yoomoney.ru/fundraise/1BDCQ2EBDNT.250710
+[sponsor-shield]: https://img.shields.io/badge/%D0%93%D0%B0%D1%80%D0%B0%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C_%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-Boosty-FF6B6B?style=flat-square&logo=boosty
+[sponsor-link]: https://boosty.to/mansmarthome/about?utm_source=github&utm_medium=referral&utm_campaign=cloudpub
 [donors-list]: https://github.com/user-attachments/assets/0875ff95-4e7f-44c7-8ccd-82a1c05b6478
-
-
