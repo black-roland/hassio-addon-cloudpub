@@ -52,5 +52,5 @@
 [donate-shield]: https://img.shields.io/badge/%E2%98%95_%D0%A0%D0%B0%D0%B7%D0%BE%D0%B2%D0%BE-%D0%AEMoney-8A2BE2?style=flat-square
 [donate-link]: https://yoomoney.ru/fundraise/1BDCQ2EBDNT.250710
 [sponsor-shield]: https://img.shields.io/badge/%D0%93%D0%B0%D1%80%D0%B0%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C_%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-Boosty-FF6B6B?style=flat-square&logo=boosty
-[sponsor-link]: https://boosty.to/mansmarthome?utm_source=github&utm_medium=referral&utm_campaign=cloudpub
+[sponsor-link]: https://boosty.to/mansmarthome/about?utm_source=github&utm_medium=referral&utm_campaign=cloudpub
 [donors-list]: https://github.com/user-attachments/assets/0875ff95-4e7f-44c7-8ccd-82a1c05b6478
