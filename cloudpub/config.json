@@ -1,7 +1,7 @@
 {
   "name": "CloudPub Client",
   "slug": "cloudpub",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "description": "Внешний доступ к Home Assistant и другим локальным ресурсам без «белого» IP (за NAT)",
   "url": "https://github.com/black-roland/hassio-addon-cloudpub",
   "init": false,
