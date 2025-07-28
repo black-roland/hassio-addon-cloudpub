@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.9.6] - 2025-07-28
+
+### Исправлено
+
+- Ошибка при запуске аддона, если токен начинается с `-` ([#22](https://github.com/black-roland/hassio-addon-cloudpub/issues/22)).
+
+### Изменено
+
+- Клиент CloudPub [обновлён до версии **2.3.0**](https://cloudpub.ru/docs/changelog).
+
 ## [1.9.5] - 2025-07-28
 
 ### Изменено
