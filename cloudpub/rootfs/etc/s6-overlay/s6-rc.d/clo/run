@@ -18,7 +18,7 @@ if [ -z "$TOKEN" ]; then
 fi
 bashio::log.info "Токен загружен из конфигурации."
 
-$CLO set token "$TOKEN"
+$CLO set token -- ${TOKEN}
 bashio::log.info "Аккаунт CloudPub успешно привязан."
 
 # Retrieve the list of currently registered services from CloudPub
