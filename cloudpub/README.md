@@ -55,4 +55,4 @@
 [sponsor-shield]: https://img.shields.io/badge/%D0%93%D0%B0%D1%80%D0%B0%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C_%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-Boosty-FF6B6B?style=flat-square&logo=boosty
 [sponsor-link]: https://boosty.to/mansmarthome/about?utm_source=github&utm_medium=referral&utm_campaign=cloudpub
 [donors-list]: https://github.com/user-attachments/assets/0875ff95-4e7f-44c7-8ccd-82a1c05b6478
-[donors-list-2]: https://github.com/user-attachments/assets/1fe81719-00ef-40f0-a413-a5ea37881a15
+[donors-list-2]: https://github.com/user-attachments/assets/3f0f182d-c53b-4ada-a2bc-7aecaf2351fa
