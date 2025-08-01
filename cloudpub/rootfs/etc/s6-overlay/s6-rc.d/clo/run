@@ -64,7 +64,7 @@ done
 for GUID in ${REGISTERED_GUIDS}; do
   if [[ ! " ${ADDON_CONFIG_GUIDS[@]} " =~ " ${GUID} " ]]; then
     bashio::log.info "Сервис с GUID ${GUID} был удален из конфигурации аддона. Удаление из CloudPub..."
-    $CLO unpublish --remove "${GUID}"
+    $CLO unpublish "${GUID}"
     bashio::log.info "Сервис успешно удален."
   fi
 done
