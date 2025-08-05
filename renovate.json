@@ -26,7 +26,7 @@
   ],
   "customDatasources": {
     "cloudpub": {
-      "defaultRegistryUrlTemplate": "https://cloudpub.ru/",
+      "defaultRegistryUrlTemplate": "https://cloudpub.ru/docs",
       "format": "html"
     }
   },
