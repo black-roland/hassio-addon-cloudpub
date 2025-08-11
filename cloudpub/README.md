@@ -24,9 +24,24 @@
 
 После добавления репозитория вы сможете установить дополнение в настройках Home Assistant.
 
-## Подробная документация
+## Настройка
 
 Подробные инструкции по настройке и использованию аддона доступны в [DOCS.md](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md).
+
+### Быстрый старт
+
+1. Установите аддон.
+2. Настройте Home Assistant. Добавьте в `configuration.yaml`:
+   ```yaml
+   http:
+     use_x_forwarded_for: true
+     trusted_proxies:
+       - 172.30.33.0/24
+   ```
+   Сохраните и **перезапустите** Home Assistant.
+3. Получите ваш [ключ API в личном кабинете CloudPub](https://cloudpub.ru/dashboard/) и укажите его в [настройках аддона](https://my.home-assistant.io/redirect/supervisor_addon/?repository_url=https%3A%2F%2Fgithub.com%2Fblack-roland%2Fhassio-addon-cloudpub&addon=6cd8d65a_cloudpub) на вкладке «Конфигурация».
+4. Запустите аддон и проверьте логи на наличие публичного URL.
+5. Готово! Ваш HA теперь доступен из интернета.
 
 ## Поддержка автора
 
