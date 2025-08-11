@@ -4,17 +4,17 @@
     {
       "customType": "regex",
       "fileMatch": [
-        "build.json$"
+        "cloudpub-canary/build.yaml$"
       ],
       "matchStrings": [
-        "\"(aarch64|amd64|armhf|armv7|i386)\":\\s\"(?<depName>.*?):(?<currentValue>.*?)\""
+        "(aarch64|amd64|armhf|armv7|i386):\\s(?<depName>.*?):(?<currentValue>.*?)"
       ],
       "datasourceTemplate": "docker"
     },
     {
       "customType": "regex",
       "fileMatch": [
-        "Dockerfile$"
+        "cloudpub-canary/Dockerfile$"
       ],
       "matchStrings": [
         "ARG CLO_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
