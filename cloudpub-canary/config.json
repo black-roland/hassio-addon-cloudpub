@@ -1,5 +1,5 @@
 {
-  "name": "CloudPub Client",
+  "name": "CloudPub Client (Canary)",
   "slug": "cloudpub",
   "version": "1.9.9",
   "description": "Внешний доступ к Home Assistant и другим локальным ресурсам без «белого» IP (за NAT)",
@@ -14,7 +14,6 @@
     "armv7",
     "i386"
   ],
-  "image": "",
   "advanced": false,
   "stage": "stable",
   "map": [

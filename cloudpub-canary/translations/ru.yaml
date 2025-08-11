@@ -1,0 +1,15 @@
+configuration:
+  token:
+    name: Токен
+    description: >-
+      Токен для привязки клиента CloudPub к вашему аккаунту. Вы можете указать как сам токен, так и всю команду `./clo set token <токен>` целиком.
+  services:
+    name: Публикации
+    description: >-
+      Список сервисов для публикации. Поддерживаются протоколы: http, https, tcp, udp, rtsp и 1c. Например, для проброса MQTT сервера укажите тип tcp и core-mosquitto:1883 в качестве адреса.
+  clo_log_level:
+    name: Уровень логирования клиента
+    description: >-
+      Уровень логирования для клиента CloudPub.
+  log_level:
+    name: Уровень логирования аддона

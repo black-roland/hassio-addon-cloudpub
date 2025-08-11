@@ -1,0 +1,15 @@
+configuration:
+  token:
+    name: Token
+    description: >-
+      Token for binding the CloudPub client to your account.
+  services:
+    name: Publications
+    description: >-
+      List of services to publish. Supported protocols: HTTP, HTTPS, TCP, UDP, and 1C.
+  clo_log_level:
+    name: Client log level
+    description: >-
+      Logging level for the CloudPub client.
+  log_level:
+    name: Add-on log level
