@@ -1,0 +1,123 @@
+---
+name: Build and Publish Images
+
+on:
+  push:
+    branches: [ "feature/registry" ]
+    paths: [ "cloudpub-canary/config.json" ]
+
+env:
+  CR_URI: mansmarthome.cr.cloud.ru
+
+jobs:
+  information:
+    name: Gather add-on information
+    runs-on: ubuntu-latest
+    outputs:
+      architectures: ${{ steps.information.outputs.architectures }}
+      build: ${{ steps.information.outputs.build }}
+      description: ${{ steps.information.outputs.description }}
+      slug: ${{ steps.information.outputs.slug }}
+      target: ${{ steps.information.outputs.target }}
+      version: ${{ steps.information.outputs.version }}
+
+      environment: ${{ steps.release.outputs.environment }}
+      name: ${{ steps.release.outputs.name }}
+    steps:
+      - name: Check out code from GitHub
+        uses: actions/checkout@v5
+      - name: Run add-on information action
+        id: information
+        uses: frenck/action-addon-information@v1.4.2
+        with:
+          path: cloudpub-canary
+      - name: Set environment and proper name
+        id: release
+        run: |
+          environment="stable"
+          name="CloudPub Client"
+
+          echo "environment=${environment}" >> "$GITHUB_OUTPUT"
+          echo "name=${name}" >> "$GITHUB_OUTPUT"
+
+  build:
+    name: Build ${{ matrix.architecture }}
+    needs: information
+    runs-on: ${{ contains(fromJson('["armhf", "armv7", "aarch64"]'), matrix.architecture) && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
+    strategy:
+      matrix:
+        architecture: ${{ fromJson(needs.information.outputs.architectures) }}
+    steps:
+      - name: Check out code from GitHub
+        uses: actions/checkout@v5
+      - name: Set up build cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.docker-cache
+          key: docker-${{ matrix.architecture }}-${{ github.sha }}
+          restore-keys: |
+            docker-${{ matrix.architecture }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Install yq
+        uses: mikefarah/yq@v4.44.3
+      - name: Compose build flags
+        id: flags
+        run: |
+          echo "date=$(date +"%Y-%m-%dT%H:%M:%SZ")" >> "$GITHUB_OUTPUT"
+          from=$(yq --no-colors eval ".build_from.${{ matrix.architecture }}" "${{ needs.information.outputs.build }}")
+          echo "from=${from}" >> "$GITHUB_OUTPUT"
+
+          if [[ "${{ matrix.architecture }}" = "amd64" ]]; then
+            echo "platform=linux/amd64" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ matrix.architecture }}" = "i386" ]]; then
+            echo "platform=linux/386" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ matrix.architecture }}" = "armhf" ]]; then
+            echo "platform=linux/arm/v6" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ matrix.architecture }}" = "armv7" ]]; then
+            echo "platform=linux/arm/v7" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ matrix.architecture }}" = "aarch64" ]]; then
+            echo "platform=linux/arm64/v8" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error ::Could not determine platform for architecture ${{ matrix.architecture }}"
+            exit 1
+          fi
+      - name: Login to Cloud.ru Artifact Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.CR_URI }}
+          username: ${{ secrets.EVO_CR_LOGIN }}
+          password: ${{ secrets.EVO_CR_PWD }}
+      - name: Download base image
+        if: steps.flags.outputs.from != 'null'
+        run: docker pull "${{ steps.flags.outputs.from }}"
+      - name: Build and Push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: |
+            ${{ env.CR_URI }}/black-roland/hassio-addon-cloudpub/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}
+            ${{ env.CR_URI }}/black-roland/hassio-addon-cloudpub/${{ matrix.architecture }}:${{ needs.information.outputs.version }}
+          context: ${{ needs.information.outputs.target }}
+          file: ${{ needs.information.outputs.target }}/Dockerfile
+          cache-from: |
+            type=local,src=/tmp/.docker-cache
+            ${{ env.CR_URI }}/black-roland/hassio-addon-cloudpub/${{ matrix.architecture }}:stable
+          cache-to: type=local,mode=max,dest=/tmp/.docker-cache-new
+          platforms: ${{ steps.flags.outputs.platform }}
+          build-args: |
+            BUILD_ARCH=${{ matrix.architecture }}
+            BUILD_DATE=${{ steps.flags.outputs.date }}
+            BUILD_DESCRIPTION=${{ needs.information.outputs.description }}
+            BUILD_FROM=${{ steps.flags.outputs.from }}
+            BUILD_NAME=${{ needs.information.outputs.name }}
+            BUILD_REF=${{ github.sha }}
+            BUILD_REPOSITORY=${{ github.repository }}
+            BUILD_VERSION=${{ needs.information.outputs.version }}
+      - name: Swap build cache
+        run: |
+          rm -rf /tmp/.docker-cache || true
+          mv /tmp/.docker-cache-new /tmp/.docker-cache || true
