@@ -17,12 +17,12 @@ jobs:
       architectures: ${{ steps.information.outputs.architectures }}
       build: ${{ steps.information.outputs.build }}
       description: ${{ steps.information.outputs.description }}
-      slug: ${{ steps.information.outputs.slug }}
       target: ${{ steps.information.outputs.target }}
       version: ${{ steps.information.outputs.version }}
 
       environment: ${{ steps.release.outputs.environment }}
       name: ${{ steps.release.outputs.name }}
+      slug: ${{ steps.release.outputs.slug }}
     steps:
       - name: Check out code from GitHub
         uses: actions/checkout@v5
@@ -31,14 +31,16 @@ jobs:
         uses: frenck/action-addon-information@v1.4.2
         with:
           path: cloudpub-canary
-      - name: Set environment and proper name
+      - name: Set environment and name
         id: release
         run: |
           environment="stable"
           name="CloudPub Client"
+          slug="cloudpub"
 
           echo "environment=${environment}" >> "$GITHUB_OUTPUT"
           echo "name=${name}" >> "$GITHUB_OUTPUT"
+          echo "slug=${slug}" >> "$GITHUB_OUTPUT"
 
   build:
     name: Build ${{ matrix.architecture }}
