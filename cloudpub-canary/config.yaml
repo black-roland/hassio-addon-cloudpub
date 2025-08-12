@@ -13,7 +13,7 @@ arch:
   - armv7
   - i386
 advanced: false
-stage: stable
+stage: experimental
 map:
   - type: addon_config
     read_only: false
