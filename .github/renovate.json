@@ -22,6 +22,18 @@
       "datasourceTemplate": "custom.cloudpub",
       "depNameTemplate": "cloudpub",
       "extractVersionTemplate": "/clo-(?<version>.+)-stable-linux-x86_64\\.tar\\.gz"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "cloudpub-canary/config.yaml$"
+      ],
+      "matchStrings": [
+        "version:\\s*[\"']?(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)-[0-9][\"']?\\s+"
+      ],
+      "datasourceTemplate": "custom.cloudpub",
+      "depNameTemplate": "cloudpub",
+      "extractVersionTemplate": "/clo-(?<version>.+)-stable-linux-x86_64\\.tar\\.gz"
     }
   ],
   "customDatasources": {
@@ -32,16 +44,14 @@
   },
   "packageRules": [
     {
-      "matchDatasources": [
-        "docker"
-      ],
-      "groupName": "Add-on base image"
+      "matchDatasources": ["docker"],
+      "groupName": "Add-on base image",
+      "automerge": true
     },
     {
-      "matchDatasources": [
-        "custom.cloudpub"
-      ],
-      "groupName": "CloudPub client version"
+      "matchDatasources": ["custom.cloudpub"],
+      "groupName": "CloudPub client version",
+      "automerge": true
     }
   ]
 }

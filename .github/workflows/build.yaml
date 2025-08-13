@@ -2,9 +2,7 @@
 name: Build and Publish Images
 
 on:
-  push:
-    branches: [ "feature/registry" ]
-    paths: [ "cloudpub-canary/config.json" ]
+  workflow_dispatch:
 
 env:
   CR_URI: mansmarthome.cr.cloud.ru
