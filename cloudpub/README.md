@@ -64,4 +64,4 @@
 [reported-installations-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Faddons.json&query=6cd8d65a_cloudpub.total&style=flat-square&label=%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9&color=brightgreen&cacheSeconds=86400
 [maintenance-shield]: https://img.shields.io/maintenance/%D0%B4%D0%B0/2025?style=flat-square&label=%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%B2%D0%B0%D0%B5%D1%82%D1%81%D1%8F%3F
 [donors-list]: https://github.com/user-attachments/assets/0875ff95-4e7f-44c7-8ccd-82a1c05b6478
-[donors-list-2]: https://github.com/user-attachments/assets/3f0f182d-c53b-4ada-a2bc-7aecaf2351fa
+[donors-list-2]: https://github.com/user-attachments/assets/6f7c7af9-8383-466d-915b-52eb5e90e01a
