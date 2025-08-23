@@ -1,10 +1,19 @@
 # Changelog
 
-## 2.3.2-1
+## 2.4.0-1
 
-![Скачиваний в неделю](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmansmarthome.info%2Fgithub%2Fblack-roland%2Fhassio-addon-cloudpub%2Ftraffic.json&query=weekly.uniques&suffix=%20%D0%B2%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%BB%D1%8E&style=flat-square&label=%D1%81%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&color=brightgreen&cacheSeconds=86400)
 [![Поддержать обновления](https://img.shields.io/badge/%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C_%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-Boosty-FF6B6B?style=flat-square&logo=boosty)](https://boosty.to/mansmarthome/about?utm_source=github&utm_medium=referral&utm_campaign=cloudpub)
 [![Разовый донат](https://img.shields.io/badge/%E2%98%95_%D0%9E%D1%82%D0%B1%D0%BB%D0%B0%D0%B3%D0%BE%D0%B4%D0%B0%D1%80%D0%B8%D1%82%D1%8C-8A2BE2?style=flat-square)](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B1%D1%8B%D1%81%D1%82%D1%80%D1%8B%D1%85-%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%B6%D0%B5%D0%B9)
+
+### Добавлено
+
+- Внутренний watchdog для автоматического перезапуска клиента при обрыве канала — при возникновении ошибки `Data channel xxx not found, dropping data`.
+
+### Изменено
+
+- [Обновлён клиент CloudPub](https://cloudpub.ru/docs/changelog).
+
+## 2.3.2-1
 
 В этом обновении — важные архитектурные изменения: вместо **локальной сборки контейнеров** теперь используются **контейнеры, собираемые предварительно** ([pre-built containers](https://developers.home-assistant.io/docs/add-ons/publishing)).
 
