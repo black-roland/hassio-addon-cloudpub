@@ -20,8 +20,7 @@
         "ARG CLO_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
       ],
       "datasourceTemplate": "custom.cloudpub",
-      "depNameTemplate": "cloudpub",
-      "extractVersionTemplate": "/clo-(?<version>.+)-stable-linux-x86_64\\.tar\\.gz"
+      "depNameTemplate": "clo"
     },
     {
       "customType": "regex",
@@ -32,8 +31,7 @@
         "version:\\s*[\"']?(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)-[0-9][\"']?\\s+"
       ],
       "datasourceTemplate": "custom.cloudpub",
-      "depNameTemplate": "cloudpub",
-      "extractVersionTemplate": "/clo-(?<version>.+)-stable-linux-x86_64\\.tar\\.gz"
+      "depNameTemplate": "clo"
     }
   ],
   "customDatasources": {
@@ -49,8 +47,9 @@
       "automerge": true
     },
     {
-      "matchDatasources": ["custom.cloudpub"],
+      "matchPackageNames": ["clo"],
       "groupName": "CloudPub client version",
+      "extractVersion": "/download/stable/clo-(?<version>.+)-stable-",
       "automerge": true
     }
   ]
