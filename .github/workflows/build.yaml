@@ -63,7 +63,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Install yq
-        uses: mikefarah/yq@v4.47.1
+        uses: mikefarah/yq@v4
       - name: Compose build flags
         id: flags
         run: |
