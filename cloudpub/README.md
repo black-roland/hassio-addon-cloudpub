@@ -43,6 +43,15 @@
 4. Запустите аддон и проверьте логи на наличие публичного URL.
 5. Готово! Ваш HA теперь доступен из интернета.
 
+## Получение помощи
+
+Подробная документация по решению проблем доступна в [DOCS.md](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md#%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC).
+
+Куда обращаться за помощью:
+
+- По вопросам работы аддона: задавайте вопросы в [**GitHub Discussions**](https://github.com/black-roland/hassio-addon-cloudpub/discussions). Велика вероятность, что на ваш вопрос уже есть ответ.
+- По вопросам работы сервиса CloudPub (обрывы связи, серверы, аккаунт): обращайтесь в [**официальную поддержку CloudPub**](https://cloudpub.ru/dashboard/support/).
+
 ## Поддержка автора
 
 Если этот аддон оказался полезным, вы можете [угостить автора чашечкой кофе](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#donationalerts). Ваша благодарность ценится!
