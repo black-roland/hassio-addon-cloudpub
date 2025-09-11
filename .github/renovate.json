@@ -3,30 +3,24 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "cloudpub-canary/build.yaml$"
-      ],
+      "managerFilePatterns": ["/cloudpub-canary/build\\.yaml$/", "/cloudpub-canary/Dockerfile$/"],
+      "matchStringsStrategy": "any",
       "matchStrings": [
-        "(aarch64|amd64|armhf|armv7|i386):\\s(?<depName>.*?):(?<currentValue>.*?)"
+        "ARG BUILD_FROM=(?<depName>.*?):(?<currentValue>.*?)\\s+",
+        "(aarch64|amd64|armhf|armv7|i386):\\s[\"']?(?<depName>.*?):(?<currentValue>.*?)[\"']?\\s"
       ],
       "datasourceTemplate": "docker"
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "cloudpub-canary/Dockerfile$"
-      ],
-      "matchStrings": [
-        "ARG CLO_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"
-      ],
+      "managerFilePatterns": ["/cloudpub-canary/Dockerfile$/"],
+      "matchStrings": ["ARG CLO_VERSION=[\"']?(?<currentValue>.+?)[\"']?\\s+"],
       "datasourceTemplate": "custom.cloudpub",
       "depNameTemplate": "clo"
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "cloudpub-canary/config.yaml$"
-      ],
+      "managerFilePatterns": ["/cloudpub-canary/config\\.yaml$/"],
       "matchStrings": [
         "version:\\s*[\"']?(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)-[0-9][\"']?\\s+"
       ],
