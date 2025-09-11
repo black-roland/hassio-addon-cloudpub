@@ -16,6 +16,9 @@ stdbuf -o L tail -F "${LOG_FILE}" 2>/dev/null | while read -r line; do
   if echo "${line}" | grep -qE "${ERROR_PATTERN}"; then
     bashio::log.error "Обнаружена ошибка: ${ERROR_PATTERN}. Перезапуск клиента CloudPub..."
 
+    # Preserve old logs before cleanup
+    cp "${LOG_FILE}" "${LOG_FILE}.old"
+
     s6-svc -h /run/s6-rc/servicedirs/clo
 
     # Cleanup logs to avoid restart loops
