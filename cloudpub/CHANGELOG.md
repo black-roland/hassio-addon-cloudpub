@@ -14,6 +14,7 @@
 - [Обновлён клиент CloudPub](https://cloudpub.ru/docs/changelog) до версии **2.4.2**.
    - CloudPub изменили уровень логирования для некоторых сообщений, из-за чего watchdog перестал работать и был удалён.
    - Но watchdog больше не нужен, так как проблема с обрывом соединения ([#8](https://github.com/ermak-dev/cloudpub/issues/8)) *вероятно* была устранена в клиенте CloudPub.
+- Базовый образ (`debian-base`) обновлён до **8.1.1**.
 
 > [!IMPORTANT]
 > Если вы ранее сталкивались с частыми обрывами соединения и watchdog помогал восстанавливать доступ, рекомендуется перед обновлением потестировать работу на [Canary-версии](https://github.com/black-roland/hassio-addon-cloudpub/discussions/32#discussioncomment-14376011).
