@@ -1,9 +1,25 @@
 # Changelog
 
-## 2.4.1-1
+## 2.4.2-1
 
 [![Поддержать обновления](https://img.shields.io/badge/%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C_%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-Boosty-FF6B6B?style=flat-square&logo=boosty)](https://boosty.to/mansmarthome/about?utm_source=github&utm_medium=referral&utm_campaign=cloudpub)
 [![Разовый донат](https://img.shields.io/badge/%E2%98%95_%D0%9E%D1%82%D0%B1%D0%BB%D0%B0%D0%B3%D0%BE%D0%B4%D0%B0%D1%80%D0%B8%D1%82%D1%8C-8A2BE2?style=flat-square)](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B1%D1%8B%D1%81%D1%82%D1%80%D1%8B%D1%85-%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%B6%D0%B5%D0%B9)
+
+### Удалено
+
+- Удалён **внутренний watchdog**, который автоматически перезапускал клиент при обнаружении ошибок `Data channel not found, dropping data`.
+
+### Изменено
+
+- [Обновлён клиент CloudPub](https://cloudpub.ru/docs/changelog) до версии **2.4.2**.
+   - CloudPub изменили уровень логирования для некоторых сообщений, из-за чего watchdog перестал работать и был удалён.
+   - Но watchdog больше не нужен, так как проблема с обрывом соединения ([#8](https://github.com/ermak-dev/cloudpub/issues/8)) *вероятно* была устранена в клиенте CloudPub.
+
+> [!IMPORTANT]
+> Если вы ранее сталкивались с частыми обрывами соединения и watchdog помогал восстанавливать доступ, рекомендуется перед обновлением потестировать работу на [Canary-версии](https://github.com/black-roland/hassio-addon-cloudpub/discussions/32#discussioncomment-14376011).
+> А если проблемы с устойчивостью соединения сохраняются на **2.4.2**, пожалуйста, обратитесь в [поддержку CloudPub](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md#%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D1%8B-%D1%81%D0%BE-%D1%81%D1%82%D0%B0%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D1%8E-%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BA%D0%BB%D0%B8%D0%B5%D0%BD%D1%82-%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B0%D0%B5%D1%82-%D1%82%D1%83%D0%BD%D0%BD%D0%B5%D0%BB%D0%B8-%D0%BF%D0%B0%D0%B4%D0%B0%D1%8E%D1%82).
+
+## 2.4.1-1
 
 ### Изменено
 
