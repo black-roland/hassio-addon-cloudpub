@@ -1,9 +1,15 @@
 # Changelog
 
-## 2.4.2-1
+## 2.4.4-1
 
 [![Поддержать обновления](https://img.shields.io/badge/%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C_%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-Boosty-FF6B6B?style=flat-square&logo=boosty)](https://boosty.to/mansmarthome/about?utm_source=github&utm_medium=referral&utm_campaign=cloudpub)
 [![Разовый донат](https://img.shields.io/badge/%E2%98%95_%D0%9E%D1%82%D0%B1%D0%BB%D0%B0%D0%B3%D0%BE%D0%B4%D0%B0%D1%80%D0%B8%D1%82%D1%8C-8A2BE2?style=flat-square)](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B1%D1%8B%D1%81%D1%82%D1%80%D1%8B%D1%85-%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%B6%D0%B5%D0%B9)
+
+### Изменено
+
+- [Обновлён клиент CloudPub](https://cloudpub.ru/docs/changelog).
+
+## 2.4.2-1
 
 ### Удалено
 
