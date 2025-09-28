@@ -8,6 +8,7 @@
 ### Изменено
 
 - [Обновлён клиент CloudPub](https://cloudpub.ru/docs/changelog).
+- Базовый образ (`debian-base`) обновлён до **8.1.3**.
 
 ## 2.4.4-1
 
