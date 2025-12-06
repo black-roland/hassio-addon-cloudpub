@@ -20,7 +20,7 @@
 
 ```yaml
 - name: name  # Опционально: читаемое имя (латиница, без спецсимволов)
-  type: service_type   # Тип сервиса: http, https, tcp, udp, rtsp или 1c
+  type: service_type   # Тип сервиса: http, https, tcp, udp, rtsp, rdp, vnc или 1c
   local_addr: address  # Локальный адрес в формате IP:порт или hostname:порт
 ```
 

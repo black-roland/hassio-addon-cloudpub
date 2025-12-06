@@ -21,14 +21,15 @@ options:
   token: ""
   clo_log_level: warn
   services:
-    - type: http
+    - name: homeassistant
+      type: http
       local_addr: homeassistant:8123
-      name: homeassistant
+
 schema:
   token: str
   services:
-    - type: list(http|https|tcp|udp|rtsp|1c)
+    - name: str?
+      type: list(http|https|tcp|udp|rtsp|rdp|vnc|1c)
       local_addr: str
-      name: str?
   clo_log_level: list(debug|info|warn|error)
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
