@@ -24,7 +24,6 @@ options:
     - name: homeassistant
       type: http
       local_addr: homeassistant:8123
-
 schema:
   token: str
   services:

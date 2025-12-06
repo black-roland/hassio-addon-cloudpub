@@ -6,7 +6,15 @@ configuration:
   services:
     name: Публикации
     description: >-
-      Список сервисов для публикации. Поддерживаются протоколы: http, https, tcp, udp, rtsp и 1c. Например, для проброса MQTT сервера укажите тип tcp и core-mosquitto:1883 в качестве адреса.
+      Список сервисов для публикации. Поддерживаются протоколы: HTTP, HTTPS, TCP, UDP, RDP, VNC и 1C. Например, для проброса MQTT сервера укажите тип tcp и core-mosquitto:1883 в качестве адреса.
+    fields:
+      name:
+        name: Комментарий
+      type:
+        name: Протокол
+        description: Протокол или тип ресурса
+      local_addr:
+        name: Локальный адрес
   clo_log_level:
     name: Уровень логирования клиента
     description: >-
