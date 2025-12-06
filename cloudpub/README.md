@@ -52,6 +52,15 @@
 - По вопросам работы аддона: задавайте вопросы в [**GitHub Discussions**](https://github.com/black-roland/hassio-addon-cloudpub/discussions). Велика вероятность, что на ваш вопрос уже есть ответ.
 - По вопросам работы сервиса CloudPub (обрывы связи, серверы, аккаунт): обращайтесь в [**официальную поддержку CloudPub**](https://cloudpub.ru/dashboard/support/).
 
+## Доступные версии
+
+Аддон доступен в двух вариантах:
+
+- **CloudPub Client** — стабильная версия. Скачивается из надёжного реестра контейнеров и устанавливается за несколько секунд.
+- **CloudPub Client (Canary)** — тестовая версия. Устанавливается дольше и может упасть с ошибкой из-за блокировки GitHub Container Registry.
+
+Рекомендуется использовать стабильную версию.
+
 ## Поддержка автора
 
 Если этот аддон оказался полезным, вы можете [угостить автора чашечкой кофе](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#donationalerts). Ваша благодарность ценится!
