@@ -1,0 +1,56 @@
+name: Сообщение о проблеме
+description: Что-то не работает или работает неправильно
+title: "[Проблема]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Опишите проблему
+      description: Коротко, что происходит?
+    validations:
+      required: true
+
+  - type: textarea
+    id: checks
+    attributes:
+      label: Что вы уже проверили?
+      description: |
+        Пожалуйста, проверьте эти два момента перед созданием issue:
+        1. **Устанавливаются ли другие аддоны?** Если и другие тоже не ставятся — проблема скорее не в этом аддоне.
+        2. **Посмотрели ли вы логи Supervisor?** (Настройки → Система → Журнал сервера → выберите Supervisor вверху справа)
+      placeholder: |
+        Пример ответа:
+        - Другие аддоны устанавливаются нормально
+        - В логах Supervisor вижу ошибку "..." (прикрепил ниже)
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Логи
+      description: Если нашли что-то в логах — прикрепите сюда
+      render: shell
+
+  - type: dropdown
+    id: version
+    attributes:
+      label: Версия Home Assistant
+      options:
+        - Не знаю
+        - Последняя
+        - Старая версия
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install_type
+    attributes:
+      label: Тип установки HA
+      options:
+        - HAOS
+        - Container (Docker)
+        - Supervised
+        - Core
+        - Не знаю
+    validations:
+      required: true

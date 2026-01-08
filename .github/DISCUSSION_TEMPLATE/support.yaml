@@ -1,0 +1,30 @@
+title: "[Вопрос] "
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Ваш вопрос
+      description: Опишите, с чем вам нужна помощь
+    validations:
+      required: true
+
+  - type: textarea
+    id: checks
+    attributes:
+      label: Что вы уже пробовали?
+      description: |
+        Перед тем как задать вопрос, проверьте пожалуйста:
+        1. **Устанавливаются ли другие аддоны?** Если нет — возможно, дело в сети.
+        2. **Заглянули ли в логи Supervisor?** (Настройки → Система → Журнал сервера → Supervisor)
+
+        Также полезно заглянуть в [документацию](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md) — там много ответов на частые вопросы.
+      placeholder: |
+        Пример:
+        - Проверил другие аддоны — устанавливаются
+        - В логах увидел "..."
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Дополнительный контекст
+      description: Расскажите подробнее о вашей ситуации, если это нужно для ответа
