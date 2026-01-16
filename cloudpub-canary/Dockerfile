@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:8.1.4
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.1.0
 FROM $BUILD_FROM
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
