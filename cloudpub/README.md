@@ -10,8 +10,9 @@
 
 - **Простота**. Достаточно скопировать токен из личного кабинета, вставить его в настройки аддона и нажать «Запустить». Через секунду ваш Home Assistant станет доступен из интернета по автогенерируемой ссылке.
 - **Поддержка HTTPS**. Внешние ссылки используют HTTPS, а значит трафик до сервера CloudPub зашифрован.
-- **Проксирование TCP и UDP**. Поддерживается не только HTTP, но и другие протоколы, включая RTSP.
+- **Проксирование TCP и UDP**. Поддерживается не только HTTP, но и другие протоколы, включая RTSP для камер наблюдения.
 - **Серверы в России**. Потенциально более высокая стабильность и производительность для пользователей из России.
+- **Бесплатно для Home Assistant**. Для удаленного доступа к панели управления Home Assistant *не нужен PRO-тариф* — [достаточно бесплатного тарифа CloudPub](https://cloudpub.ru/plans/). PRO требуется для продвинутых функций: MQTT, RTSP, TCP/UDP и других не-HTTP протоколов.
 
 <img src="https://github.com/user-attachments/assets/9aa52fe2-0fda-40ce-a15e-e4c7702c8c19" alt="Логи аддона" width="400" />
 <img src="https://github.com/user-attachments/assets/32bddd8d-7986-4640-a0d7-66c7fcf50eeb" alt="Сервисы в CloudPub" width="400" />
@@ -77,6 +78,8 @@
 Данный аддон является неофициальным и не связан с CloudPub. CloudPub — это сервис, предоставляемый его разработчиками.
 
 Аддон не является официальным продуктом CloudPub и не поддерживается командой CloudPub. Ответственность за изменения в API CloudPub или возможное прекращение работы сервиса не лежит на разработчике аддона.
+
+Информация о тарифах CloudPub предоставлена исключительно в справочных целях. Актуальные условия, цены и ограничения всегда доступны на официальном сайте [CloudPub](https://cloudpub.ru/plans/).
 
 [latest-version-shield]: https://img.shields.io/github/package-json/v/black-roland/hassio-addon-cloudpub?filename=cloudpub%2Fconfig.json&style=flat-square&label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F&cacheSeconds=86400
 [reported-installations-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Faddons.json&query=6cd8d65a_cloudpub.total&style=flat-square&label=%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9&color=brightgreen&cacheSeconds=86400
