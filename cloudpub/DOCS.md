@@ -193,8 +193,47 @@ CloudPub Client (Canary)
 
 Если вы хотите помочь в тестировании и разработке аддона, пожалуйста ознакомьтесь с [CONTRIBUTING.md](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/CONTRIBUTING.md).
 
+## Публикация хостов Nginx Proxy Manager через CloudPub
+
+### Пошаговая инструкция
+
+1. В *конфигурации* аддона CloudPub добавьте новую HTTP-публикацию для Nginx Proxy Manager: `a0d7b954-nginxproxymanager:80`:
+
+   <img height="400" alt="Настройка CloudPub для NPM" src="https://github.com/user-attachments/assets/49a5e14e-1832-4b77-bc6c-e3e6bd779c7d" />
+
+   Используйте тип `http`, а не `https`. CloudPub автоматически добавит TLS-шифрование на своей стороне и выдаст сертификат для вашего поддомена.
+
+3. Сохраните настройки и перезапустите аддон CloudPub.
+
+4. После перезапуска перейдите на вкладку *Журнал* и найдите ссылку, которую сгенерировал CloudPub:
+
+   ```
+   https://[уникальное_имя].cloudpub.ru
+   ```
+
+   Скопируйте доменное имя (без `https://`).
+
+5. Откройте веб-интерфейс Nginx Proxy Manager и добавьте новый *Proxy Host*:
+
+   <img height="400" alt="Настройка Proxy Host в NPM" src="https://github.com/user-attachments/assets/c7055d0c-d405-4e11-ad57-501e96dc2983" />
+
+   - **Domain Names**: вставьте скопированный домен CloudPub.
+   - **Scheme**: `http`
+   - **Forward Hostname / IP**: например, `homeassistant`.
+   - **Forward Port**: например, `8123`.
+
+7. **Настраивать SSL в Nginx Proxy Manager не нужно**. CloudPub автоматически предоставляет TLS-сертификат для вашего поддомена `*.cloudpub.ru`.
+
+8. Теперь вы можете получить доступ к настроенному в Nginx Proxy Manager хосту по ссылке:
+
+   ```
+   https://[уникальное_имя].cloudpub.ru
+   ```
+
 ## Уведомление
 
 Данный аддон является неофициальным и не связан с CloudPub. CloudPub — это сервис, предоставляемый его разработчиками.
 
 Аддон не является официальным продуктом CloudPub и не поддерживается командой CloudPub. Ответственность за изменения в API CloudPub или возможное прекращение работы сервиса не лежит на разработчике аддона.
+
+Информация о тарифах CloudPub предоставлена исключительно в справочных целях. Актуальные условия, цены и ограничения всегда доступны на официальном сайте [CloudPub](https://cloudpub.ru/plans/).
