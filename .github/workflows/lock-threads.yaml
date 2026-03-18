@@ -2,7 +2,7 @@ name: "Lock Threads"
 
 on:
   schedule:
-    - cron: "0 3 * * 0"
+    - cron: "0 3 * * 0" # every Sunday at 03:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -20,5 +20,5 @@ jobs:
       - uses: dessant/lock-threads@v6
         with:
           issue-inactive-days: "7"
+          discussion-inactive-days: "7"
           pr-inactive-days: "1"
-          issue-lock-reason: "resolved"
