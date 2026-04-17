@@ -11,8 +11,8 @@
 - **Простота**. Достаточно скопировать токен из личного кабинета, вставить его в настройки аддона и нажать «Запустить». Через секунду ваш Home Assistant станет доступен из интернета по автогенерируемой ссылке.
 - **Поддержка HTTPS**. Внешние ссылки используют HTTPS, а значит трафик до сервера CloudPub зашифрован.
 - **Проксирование TCP и UDP**. Поддерживается не только HTTP, но и другие протоколы, включая RTSP для камер наблюдения.
-- **Серверы в России**. Потенциально более высокая стабильность и производительность для пользователей из России.
 - **Бесплатно для Home Assistant**. Для удаленного доступа к панели управления Home Assistant *не нужен PRO-тариф* — [достаточно бесплатного тарифа CloudPub](https://cloudpub.ru/plans/). PRO требуется для продвинутых функций: MQTT, RTSP, TCP/UDP и других не-HTTP протоколов.
+- **Серверы в России**. Потенциально более высокая стабильность и производительность для пользователей из России.
 
 <img src="https://github.com/user-attachments/assets/9aa52fe2-0fda-40ce-a15e-e4c7702c8c19" alt="Логи аддона" width="400" />
 <img src="https://github.com/user-attachments/assets/32bddd8d-7986-4640-a0d7-66c7fcf50eeb" alt="Сервисы в CloudPub" width="400" />
@@ -70,7 +70,7 @@
 
 Огромное спасибо всем, кто поддерживает этот проект:
 
-<img src="https://github.com/user-attachments/assets/82decb06-f646-4355-a9b6-d5c8a3375d12" align="top" alt="Спасибо" />
+<img src="https://github.com/user-attachments/assets/4c9dfa92-9d52-4219-a1cd-e4daf83bccfd" align="top" alt="Спасибо" />
 <img src="https://github.com/user-attachments/assets/dbc56dca-55df-425f-893c-ee7bb7f46925" align="top" alt="Спасибо" />
 
 ## Уведомление
