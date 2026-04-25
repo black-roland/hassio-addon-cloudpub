@@ -22,26 +22,8 @@ $CLO set token -- ${TOKEN}
 bashio::log.info "Аккаунт CloudPub успешно привязан."
 
 # Retrieve the list of currently registered services from CloudPub
-CLO_LS_TIMEOUT_SEC=30
-REGISTERED_SERVICES=$(timeout "${CLO_LS_TIMEOUT_SEC}" $CLO ls)
-CLO_LS_EXIT_CODE=$?
-
-if [[ ${CLO_LS_EXIT_CODE} -eq 124 ]]; then
-  bashio::log.warning "Превышено время ожидания (${CLO_LS_TIMEOUT_SEC}с) при выполнении 'clo ls'. Возможно, отсутствует доступ к серверам CloudPub."
-fi
-
-if [[ ${CLO_LS_EXIT_CODE} -ne 0 ]]; then
-  bashio::log.error "Ошибка при выполнении 'clo ls' (код: ${CLO_LS_EXIT_CODE})"
-
-  if [[ -f /root/.cache/cloudpub/client.log ]]; then
-    cat /root/.cache/cloudpub/client.log >&2
-  else
-    bashio::log.error "Файл лога не найден: /root/.cache/cloudpub/client.log"
-  fi
-
-  bashio::exit.nok "Ошибка при получении списка зарегистрированных сервисов."
-fi
-
+# Exit code 124 from timeout will be propagated to the finish script
+REGISTERED_SERVICES=$(timeout 30 $CLO ls)
 REGISTERED_GUIDS=$(echo "${REGISTERED_SERVICES}" | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' || true)
 sleep 1
 

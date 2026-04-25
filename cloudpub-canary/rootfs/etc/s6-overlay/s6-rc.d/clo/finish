@@ -9,6 +9,17 @@ EXIT_CODE_SERVICE="${1}"
 EXIT_CODE_SIGNAL="${2}"
 readonly SERVICE="clo"
 
+# Handle timeout from 'clo ls' (exit code 124 from GNU timeout)
+if [[ ${EXIT_CODE_SERVICE} -eq 124 ]]; then
+  if [[ -f /root/.cache/cloudpub/client.log ]]; then
+    cat /root/.cache/cloudpub/client.log >&2
+  else
+    bashio::log.error "Файл лога не найден: /root/.cache/cloudpub/client.log"
+  fi
+
+  bashio::log.warning "Превышено время ожидания при выполнении 'clo ls'. Возможно, отсутствует доступ к серверам CloudPub."
+fi
+
 bashio::log.info "Сервис ${SERVICE} завершил работу с кодом ${EXIT_CODE_SERVICE} (сигнал: ${EXIT_CODE_SIGNAL})"
 
 # Handle exit codes
