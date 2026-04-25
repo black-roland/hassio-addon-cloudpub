@@ -14,10 +14,10 @@ if [[ ${EXIT_CODE_SERVICE} -eq 124 ]]; then
   if [[ -f /root/.cache/cloudpub/client.log ]]; then
     cat /root/.cache/cloudpub/client.log >&2
   else
-    bashio::log.error "Файл лога не найден: /root/.cache/cloudpub/client.log"
+    bashio::log.warning "Файл лога не найден: /root/.cache/cloudpub/client.log"
   fi
 
-  bashio::log.warning "Превышено время ожидания при выполнении 'clo ls'. Возможно, отсутствует доступ к серверам CloudPub."
+  bashio::log.error "Превышено время ожидания при выполнении 'clo ls'. Возможно, отсутствует доступ к серверам CloudPub."
 fi
 
 bashio::log.info "Сервис ${SERVICE} завершил работу с кодом ${EXIT_CODE_SERVICE} (сигнал: ${EXIT_CODE_SIGNAL})"
