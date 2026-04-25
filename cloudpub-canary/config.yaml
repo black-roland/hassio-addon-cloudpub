@@ -12,7 +12,6 @@ arch:
   - armhf
   - armv7
   - i386
-advanced: false
 stage: experimental
 map:
   - type: addon_config

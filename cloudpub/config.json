@@ -15,7 +15,6 @@
     "i386"
   ],
   "image": "mansmarthome.cr.cloud.ru/black-roland/hassio-addon-cloudpub/{arch}",
-  "advanced": false,
   "stage": "stable",
   "map": [
     {
