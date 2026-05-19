@@ -95,6 +95,12 @@ http:
 
 После внесения изменений перезагрузите систему.
 
+#### `homeassistant.local` вместо `homeassistant`
+
+Проверьте, что в настройках публикаций указан корректный адрес: `homeassistant:8123`.
+
+Подробнее [про разницу между `homeassistant.local` и `homeassistant` можно почитать в этой дискуссии](https://github.com/black-roland/hassio-addon-cloudpub/discussions/63#discussioncomment-16816943).
+
 #### Отступы в YAML
 
 Если ошибка сохраняется, убедитесь, что `configuration.yaml` правильно структурирован. Особенно важно следить за правильностью отступов в YAML. Для валидации конфига можно использовать:
