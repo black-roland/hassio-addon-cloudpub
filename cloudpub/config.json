@@ -9,10 +9,7 @@
   "boot": "auto",
   "arch": [
     "aarch64",
-    "amd64",
-    "armhf",
-    "armv7",
-    "i386"
+    "amd64"
   ],
   "image": "mansmarthome.cr.cloud.ru/black-roland/hassio-addon-cloudpub/{arch}",
   "stage": "stable",

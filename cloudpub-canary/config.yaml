@@ -9,9 +9,6 @@ boot: auto
 arch:
   - aarch64
   - amd64
-  - armhf
-  - armv7
-  - i386
 stage: experimental
 map:
   - type: addon_config
