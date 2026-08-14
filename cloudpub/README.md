@@ -71,7 +71,7 @@
 Огромное спасибо всем, кто поддерживает этот проект:
 
 <img src="https://github.com/user-attachments/assets/53cfc991-0057-44d3-9a8f-3a274bd5beb6" align="top" alt="Спасибо" />
-<img src="https://github.com/user-attachments/assets/d433722b-6e5e-4d42-8a5b-015a783a0c48" align="top" alt="Спасибо" />
+<img src="https://github.com/user-attachments/assets/a8b899cb-19d1-4fc4-976f-52f292e3b8a2" align="top" alt="Спасибо" />
 
 ## Уведомление
 
