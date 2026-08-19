@@ -1,9 +1,20 @@
 # Changelog
 
-## 3.3.0-1
+## 3.3.0-2
 
 [![Поддержать обновления](https://img.shields.io/badge/%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C_%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-Boosty-FF6B6B?style=flat-square&logo=boosty)](https://boosty.to/mansmarthome/about?utm_source=github&utm_medium=referral&utm_campaign=cloudpub)
 [![Разовый донат](https://img.shields.io/badge/%E2%98%95_%D0%9E%D1%82%D0%B1%D0%BB%D0%B0%D0%B3%D0%BE%D0%B4%D0%B0%D1%80%D0%B8%D1%82%D1%8C-8A2BE2?style=flat-square)](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0-%D0%B1%D1%8B%D1%81%D1%82%D1%80%D1%8B%D1%85-%D0%BF%D0%BB%D0%B0%D1%82%D0%B5%D0%B6%D0%B5%D0%B9)
+
+### Добавлено
+
+- Автоматическое обнаружение [порта, используемого Home Assistant](https://t.me/mansmarthomenews/381).
+   Это изменение не затрагивает существующих пользователей, но вы можете активировать [автоопределение порта Home Assistant, изменив локальный адрес публикации](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md#%D0%B0%D0%B2%D1%82%D0%BE%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BE%D1%80%D1%82%D0%B0).
+
+### Изменено
+
+- Базовый образ (`debian-base`) обновлён до версии **9.4.0**.
+
+## 3.3.0-1
 
 ### Исправлено
 
