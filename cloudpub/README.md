@@ -32,17 +32,14 @@
 ### Быстрый старт
 
 1. Установите аддон.
-2. Настройте Home Assistant. Добавьте в `configuration.yaml`:
-   ```yaml
-   http:
-     use_x_forwarded_for: true
-     trusted_proxies:
-       - 172.30.33.0/24
-   ```
-   Сохраните и **перезапустите** Home Assistant.
-3. Получите ваш [ключ API в личном кабинете CloudPub](https://cloudpub.ru/dashboard/) и укажите его в [настройках аддона](https://my.home-assistant.io/redirect/supervisor_addon/?repository_url=https%3A%2F%2Fgithub.com%2Fblack-roland%2Fhassio-addon-cloudpub&addon=6cd8d65a_cloudpub) на вкладке «Конфигурация».
-4. Запустите аддон и проверьте логи на наличие публичного URL.
-5. Готово! Ваш HA теперь доступен из интернета.
+2. В интерфейсе Home Assistant откройте *Настройки* → *Система* → [*Сеть*](https://my.home-assistant.io/redirect/network/).
+3. В блоке *HTTP-сервер*, в разделе *Обратный прокси*:
+    - Включите *Доверять X-Forwarded-For*;
+    - Добавьте доверенный прокси: `172.30.33.0/24`.
+4. Нажмите *Сохранить*.
+5. Получите [ключ API в личном кабинете CloudPub](https://cloudpub.ru/dashboard/) и укажите его в [настройках аддона](https://my.home-assistant.io/redirect/supervisor_addon/?repository_url=https%3A%2F%2Fgithub.com%2Fblack-roland%2Fhassio-addon-cloudpub&addon=6cd8d65a_cloudpub) на вкладке «Конфигурация».
+6. Запустите аддон и проверьте логи на наличие публичного URL.
+7. Готово! Ваш HA теперь доступен из интернета.
 
 ## Получение помощи
 
