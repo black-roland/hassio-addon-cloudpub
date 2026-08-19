@@ -1,4 +1,4 @@
-# Документация для аддона CloudPub
+# Документация приложения CloudPub для Home Assistant
 
 ## Настройка
 
@@ -6,7 +6,7 @@
 
 Токен (API-ключ) можно получить в [панели управления CloudPub](https://cloudpub.ru/dashboard/) в разделе «Привяжите приложение к аккаунту». Вы можете скопировать как сам токен, так и всю команду `./clo set token <токен>` целиком.
 
-### Конфигурация аддона
+### Конфигурация приложения CloudPub для Home Assistant
 
 Основные параметры конфигурации:
 
@@ -32,7 +32,7 @@ clo_log_level: info
 services:
   - name: homeassistant
     type: http
-    local_addr: homeassistant:80
+    local_addr: homeassistant # порт определяется автоматически
   - name: mqtt
     type: tcp
     local_addr: core-mosquitto:1883 # в примере используется порт без поддержки SSL
@@ -59,6 +59,19 @@ http:
 
 > [!NOTE]
 > После изменения `configuration.yaml` перезапустите Home Assistant, чтобы применить настройки.
+
+#### Автоопределение порта
+
+Вместо явного указания порта (`homeassistant:80` или `homeassistant:8123`) вы можете указать только имя хоста в качестве локального адреса:
+
+```yaml
+services:
+  - name: homeassistant
+    type: http
+    local_addr: homeassistant
+```
+
+Приложение автоматически определит порт, на котором работает Home Assistant.
 
 ## Использование
 
@@ -94,12 +107,6 @@ http:
 ```
 
 После внесения изменений перезагрузите систему.
-
-#### `homeassistant.local` вместо `homeassistant`
-
-Проверьте, что в настройках публикаций указан корректный адрес: `homeassistant:80`.
-
-Подробнее [про разницу между `homeassistant.local` и `homeassistant` можно почитать в этой дискуссии](https://github.com/black-roland/hassio-addon-cloudpub/discussions/63#discussioncomment-16816943).
 
 #### Отступы в YAML
 

@@ -4,7 +4,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-bashio::log.info "Запуск аддона CloudPub..."
+bashio::log.info "Запуск приложения CloudPub для Home Assistant..."
 
 LOG_LEVEL=$(bashio::config 'clo_log_level')
 
@@ -29,19 +29,45 @@ sleep 1
 
 ADDON_CONFIG_GUIDS=()
 
+# Resolve the Home Assistant local address (auto-detect port from HA storage).
+# Returns "homeassistant:<port>" using the modern default (80) when possible,
+# or the legacy default (8123) when the storage file is missing.
+resolve_ha_addr() {
+  local HTTP_CFG_PATH="/homeassistant/.storage/http"
+
+  # No storage/http → older HA, legacy default
+  if [[ ! -f "${HTTP_CFG_PATH}" ]]; then
+    echo "homeassistant:8123"
+    return 0
+  fi
+
+  # File exists: use the configured port, or fall back to the modern default (80)
+  local PORT
+  PORT=$(jq -r '.data.stable.server_port // 80' "${HTTP_CFG_PATH}" 2>/dev/null) || PORT=80
+
+  echo "homeassistant:${PORT}"
+}
+
 # Register or update services based on the add-on configuration
 for ID in $(bashio::config "services|keys"); do
   TYPE=$(bashio::config "services[${ID}].type")
   LOCAL_ADDR=$(bashio::config "services[${ID}].local_addr")
   NAME=$(bashio::config "services[${ID}].name")
 
+  # Auto-detect port for Home Assistant
+  if [[ "${LOCAL_ADDR}" == *"homeassistant"* ]]; then
+    RESOLVED_ADDR=$(resolve_ha_addr)
+
+    if [[ "${LOCAL_ADDR}" == "homeassistant" ]]; then
+      LOCAL_ADDR="${RESOLVED_ADDR}"
+    elif [[ "${LOCAL_ADDR}" != "${RESOLVED_ADDR}" ]]; then
+      bashio::log.warning "Адрес Home Assistant в конфигурации приложения (${LOCAL_ADDR}) не совпадает с автоматически определённым (${RESOLVED_ADDR}). Подробнее: https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md#автоопределение-порта"
+    fi
+  fi
+
   bashio::log.info "Регистрация сервиса:"
   bashio::log.info "  - Тип: ${TYPE}"
   bashio::log.info "  - Локальный адрес: ${LOCAL_ADDR}"
-
-  if [[ "${LOCAL_ADDR}" == *"homeassistant.local"* ]]; then
-    bashio::log.warning "Используйте homeassistant:80 вместо homeassistant.local:80. Подробнее: https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md#homeassistantlocal-%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%BE-homeassistant"
-  fi
 
   # Check if the service is already registered in CloudPub
   SERVICE_GUID=$(echo "${REGISTERED_SERVICES}" | grep -F "${LOCAL_ADDR}" | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' || true)
@@ -68,7 +94,7 @@ done
 # Remove services from CloudPub that are no longer defined in the add-on configuration
 for GUID in ${REGISTERED_GUIDS}; do
   if [[ ! " ${ADDON_CONFIG_GUIDS[@]} " =~ " ${GUID} " ]]; then
-    bashio::log.info "Сервис с GUID ${GUID} был удален из конфигурации аддона. Удаление из CloudPub..."
+    bashio::log.info "Сервис с GUID ${GUID} был удален из конфигурации приложения. Удаление из CloudPub..."
     $CLO unpublish "${GUID}"
     bashio::log.info "Сервис успешно удален."
   fi

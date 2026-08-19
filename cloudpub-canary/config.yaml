@@ -1,6 +1,6 @@
 name: CloudPub Client (Canary)
 slug: cloudpub-canary
-version: 3.3.0-1
+version: 3.3.0-2
 description: Тестовая версия дополнения
 url: https://github.com/black-roland/hassio-addon-cloudpub
 init: false
@@ -13,13 +13,15 @@ stage: experimental
 map:
   - type: addon_config
     read_only: false
+  - type: homeassistant_config
+    read_only: true
 options:
   token: ""
   clo_log_level: warn
   services:
     - name: homeassistant
       type: http
-      local_addr: homeassistant:80
+      local_addr: homeassistant
 schema:
   token: str
   services:
