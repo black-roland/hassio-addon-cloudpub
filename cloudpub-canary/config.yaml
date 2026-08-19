@@ -19,7 +19,7 @@ options:
   services:
     - name: homeassistant
       type: http
-      local_addr: homeassistant:8123
+      local_addr: homeassistant:80
 schema:
   token: str
   services:

@@ -32,7 +32,7 @@ clo_log_level: info
 services:
   - name: homeassistant
     type: http
-    local_addr: homeassistant:8123
+    local_addr: homeassistant:80
   - name: mqtt
     type: tcp
     local_addr: core-mosquitto:1883 # в примере используется порт без поддержки SSL
@@ -97,7 +97,7 @@ http:
 
 #### `homeassistant.local` вместо `homeassistant`
 
-Проверьте, что в настройках публикаций указан корректный адрес: `homeassistant:8123`.
+Проверьте, что в настройках публикаций указан корректный адрес: `homeassistant:80`.
 
 Подробнее [про разницу между `homeassistant.local` и `homeassistant` можно почитать в этой дискуссии](https://github.com/black-roland/hassio-addon-cloudpub/discussions/63#discussioncomment-16816943).
 
