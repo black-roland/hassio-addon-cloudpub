@@ -1,6 +1,6 @@
 name: CloudPub Client (Canary)
 slug: cloudpub-canary
-version: 3.4.889-2
+version: 3.4.889-1
 description: Тестовая версия дополнения
 url: https://github.com/black-roland/hassio-addon-cloudpub
 init: false
