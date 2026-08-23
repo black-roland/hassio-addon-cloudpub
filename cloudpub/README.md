@@ -1,44 +1,44 @@
-# Home Assistant Add-on: CloudPub
+# Home Assistant App: CloudPub
 
 ![Последняя версия][latest-version-shield]
 ![Активных инсталляций][reported-installations-shield]
 ![Проект поддерживается?][maintenance-shield]
 
-Этот аддон предоставляет внешний доступ к Home Assistant и другим локальным ресурсам за NAT без «белого» IP. Это неофициальное дополнение для сервиса [CloudPub](https://cloudpub.ru/), который является альтернативой KeenDNS, Dataplicity, Ngrok, Cloudflared и другим подобным сервисам.
+Это приложение для Home Assistant открывает внешний доступ к вашей системе и другим локальным ресурсам за NAT без «белого» IP. Это неофициальное дополнение для сервиса [CloudPub](https://cloudpub.ru/), который является альтернативой KeenDNS, Dataplicity, Ngrok, Cloudflared и другим подобным сервисам.
 
 ## Ключевые особенности
 
-- **Простота**. Достаточно скопировать токен из личного кабинета, вставить его в настройки аддона и нажать «Запустить». Через секунду ваш Home Assistant станет доступен из интернета по автогенерируемой ссылке.
+- **Простота**. Достаточно скопировать токен из личного кабинета, вставить его в настройки приложения и нажать «Запустить». Через секунду ваш Home Assistant станет доступен из интернета по автогенерируемой ссылке.
 - **Поддержка HTTPS**. Внешние ссылки используют HTTPS, а значит трафик до сервера CloudPub зашифрован.
 - **Проксирование TCP и UDP**. Поддерживается не только HTTP, но и другие протоколы, включая RTSP для камер наблюдения.
 - **Бесплатно для Home Assistant**. Для удаленного доступа к панели управления Home Assistant *не нужен PRO-тариф* — [достаточно бесплатного тарифа CloudPub](https://cloudpub.ru/plans/). PRO требуется для продвинутых функций: MQTT, RTSP, TCP/UDP и других не-HTTP протоколов.
 - **Серверы в России**. Потенциально более высокая стабильность и производительность для пользователей из России.
 
-<img src="https://github.com/user-attachments/assets/9aa52fe2-0fda-40ce-a15e-e4c7702c8c19" alt="Логи аддона" width="400" />
+<img src="https://github.com/user-attachments/assets/9aa52fe2-0fda-40ce-a15e-e4c7702c8c19" alt="Логи приложения" width="400" />
 <img src="https://github.com/user-attachments/assets/32bddd8d-7986-4640-a0d7-66c7fcf50eeb" alt="Сервисы в CloudPub" width="400" />
 
 ## Установка
 
-Для установки аддона добавьте репозиторий в Home Assistant. Вы можете сделать это вручную, указав ссылку на репозиторий (`https://github.com/black-roland/hassio-addon-cloudpub`), или нажав кнопку ниже:
+Для установки приложения добавьте репозиторий в Home Assistant. Вы можете сделать это вручную, указав ссылку на репозиторий (`https://github.com/black-roland/hassio-addon-cloudpub`), или нажав кнопку ниже:
 
-[![Установить аддон в Home Assistant](https://my.home-assistant.io/badges/supervisor_addon.svg)](https://my.home-assistant.io/redirect/supervisor_addon/?repository_url=https%3A%2F%2Fgithub.com%2Fblack-roland%2Fhassio-addon-cloudpub&addon=6cd8d65a_cloudpub)
+[![Установить приложение в Home Assistant](https://my.home-assistant.io/badges/supervisor_addon.svg)](https://my.home-assistant.io/redirect/supervisor_addon/?repository_url=https%3A%2F%2Fgithub.com%2Fblack-roland%2Fhassio-addon-cloudpub&addon=6cd8d65a_cloudpub)
 
-После добавления репозитория вы сможете установить дополнение в настройках Home Assistant.
+После добавления репозитория вы сможете установить приложение в настройках Home Assistant.
 
 ## Настройка
 
-Подробные инструкции по настройке и использованию аддона доступны в [DOCS.md](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md).
+Подробные инструкции по настройке и использованию приложения доступны в [DOCS.md](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md).
 
 ### Быстрый старт
 
-1. Установите аддон.
+1. Установите приложение.
 2. В интерфейсе Home Assistant откройте *Настройки* → *Система* → [*Сеть*](https://my.home-assistant.io/redirect/network/).
 3. В блоке *HTTP-сервер*, в разделе *Обратный прокси*:
     - Включите *Доверять X-Forwarded-For*;
     - Добавьте доверенный прокси: `172.30.33.0/24`.
 4. Нажмите *Сохранить*.
-5. Получите [ключ API в личном кабинете CloudPub](https://cloudpub.ru/dashboard/) и укажите его в [настройках аддона](https://my.home-assistant.io/redirect/supervisor_addon/?repository_url=https%3A%2F%2Fgithub.com%2Fblack-roland%2Fhassio-addon-cloudpub&addon=6cd8d65a_cloudpub) на вкладке «Конфигурация».
-6. Запустите аддон и проверьте логи на наличие публичного URL.
+5. Получите [ключ API в личном кабинете CloudPub](https://cloudpub.ru/dashboard/) и укажите его в [настройках приложения](https://my.home-assistant.io/redirect/supervisor_addon/?repository_url=https%3A%2F%2Fgithub.com%2Fblack-roland%2Fhassio-addon-cloudpub&addon=6cd8d65a_cloudpub) на вкладке «Конфигурация».
+6. Запустите приложение и проверьте логи на наличие публичного URL.
 7. Готово! Ваш HA теперь доступен из интернета.
 
 ## Получение помощи
@@ -47,12 +47,12 @@
 
 Куда обращаться за помощью:
 
-- По вопросам работы аддона: задавайте вопросы в [**GitHub Discussions**](https://github.com/black-roland/hassio-addon-cloudpub/discussions). Велика вероятность, что на ваш вопрос уже есть ответ.
+- По вопросам работы приложения для Home Assistant: задавайте вопросы в [**GitHub Discussions**](https://github.com/black-roland/hassio-addon-cloudpub/discussions). Велика вероятность, что на ваш вопрос уже есть ответ.
 - По вопросам работы сервиса CloudPub (обрывы связи, серверы, аккаунт): обращайтесь в [**официальную поддержку CloudPub**](https://cloudpub.ru/dashboard/support/).
 
 ## Доступные версии
 
-Аддон доступен в двух вариантах:
+Приложение доступно в двух вариантах:
 
 - **CloudPub Client** — стабильная версия. Скачивается из надёжного реестра контейнеров и устанавливается за несколько секунд.
 - **CloudPub Client (Canary)** — тестовая версия. Устанавливается дольше и может упасть с ошибкой из-за блокировки GitHub Container Registry.
@@ -61,7 +61,7 @@
 
 ## Поддержка автора
 
-Если этот аддон оказался полезным, вы можете [угостить автора чашечкой кофе](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#donationalerts). Ваша благодарность ценится!
+Если это приложение для Home Assistant оказалось полезным, вы можете [угостить автора чашечкой кофе](https://mansmarthome.info/donate/?utm_source=github&utm_medium=referral&utm_campaign=cloudpub#donationalerts). Ваша благодарность ценится!
 
 #### Благодарности
 
@@ -72,9 +72,9 @@
 
 ## Уведомление
 
-Данный аддон является неофициальным и не связан с CloudPub. CloudPub — это сервис, предоставляемый его разработчиками.
+Данное приложение для Home Assistant является неофициальным и не связано с CloudPub. CloudPub — это сервис, предоставляемый его разработчиками.
 
-Аддон не является официальным продуктом CloudPub и не поддерживается командой CloudPub. Ответственность за изменения в API CloudPub или возможное прекращение работы сервиса не лежит на разработчике аддона.
+Приложение не является официальным продуктом CloudPub и не поддерживается командой CloudPub. Ответственность за изменения в API CloudPub или возможное прекращение работы сервиса не лежит на разработчике приложения.
 
 Информация о тарифах CloudPub предоставлена исключительно в справочных целях. Актуальные условия, цены и ограничения всегда доступны на официальном сайте [CloudPub](https://cloudpub.ru/plans/).
 
