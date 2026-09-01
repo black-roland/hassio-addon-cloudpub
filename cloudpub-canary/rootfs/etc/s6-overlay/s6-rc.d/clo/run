@@ -84,7 +84,6 @@ for ID in $(bashio::config "services|keys"); do
       sleep 1
       $CLO register "${TYPE}" "${LOCAL_ADDR}"
     fi
-    bashio::log.info "Сервис успешно зарегистрирован."
   else
     ADDON_CONFIG_GUIDS+=("${SERVICE_GUID}")
     bashio::log.info "Сервис уже зарегистрирован."
