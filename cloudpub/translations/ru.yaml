@@ -1,8 +1,8 @@
 configuration:
   token:
-    name: Токен
+    name: Ключ API
     description: >-
-      Токен для привязки клиента CloudPub к вашему аккаунту. Вы можете указать как сам токен, так и всю команду `./clo set token <токен>` целиком.
+      Ключ для привязки клиента CloudPub к вашему аккаунту.
   services:
     name: Публикации
     description: >-
