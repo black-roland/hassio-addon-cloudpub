@@ -8,7 +8,7 @@ FROM $BUILD_FROM
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ARG BUILD_ARCH=amd64
-ARG CLO_VERSION="3.5.1056"
+ARG CLO_VERSION="3.6.902"
 
 RUN \
     if [ "${BUILD_ARCH}" = "aarch64" ]; then CLO_ARCH="aarch64"; \
