@@ -1,0 +1,51 @@
+name: Сообщить о проблеме
+description: Что-то не работает или работает неправильно
+title: "Проблема: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Опишите проблему
+      description: Что происходит и что вы ожидали вместо этого?
+      placeholder: |
+        Приложение падает сразу после запуска.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Логи
+      description: |
+        Самая ценная часть — без логов я могу только гадать.
+        - Лог приложения: *Настройки* → *Приложения* → <название_приложения> → *Журнал*.
+        - Лог Supervisor: *Настройки* → *Система* → *Журнал сервера* → *Supervisor*.
+      placeholder: |
+        2025-08-20 11:18:49 ERROR client::client: Data channel 12947 closed by server with error: Connection reset by peer (os error 104)
+      render: text
+
+  - type: input
+    id: boosty
+    attributes:
+      label: Ваше имя на Boosty
+      placeholder: ivan.ivanov.99
+      description: |
+        Если вы [подписчик на Boosty](https://boosty.to/mansmarthome), то укажите, пожалуйста, никнейм или часть email — лишь бы я понял, о ком речь.
+
+        ⚠️ Данные доступны публично, поэтому полный email лучше не оставлять.
+
+  - type: dropdown
+    id: install_type
+    attributes:
+      label: Тип установки HA
+      options:
+        - HAOS
+        - Supervised
+        - Не знаю
+
+  - type: input
+    id: versions
+    attributes:
+      label: Версия Home Assistant и приложения
+      placeholder: "HA: 2026.11, приложение: 3.7.956-1."
