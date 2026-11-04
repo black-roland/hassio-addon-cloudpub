@@ -15,7 +15,7 @@
   "stage": "stable",
   "map": [
     {
-      "type": "addon_config",
+      "type": "app_config",
       "read_only": false
     },
     {
