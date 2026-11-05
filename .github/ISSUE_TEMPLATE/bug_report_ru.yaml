@@ -20,7 +20,7 @@ body:
       description: |
         Самая ценная часть — без логов я могу только гадать.
         - Лог приложения: *Настройки* → *Приложения* → <название_приложения> → *Журнал*.
-        - Лог Supervisor: *Настройки* → *Система* → *Журнал сервера* → *Supervisor*.
+        - Если проблема с установкой приложения, то понадобится лог Supervisor: *Настройки* → *Система* → *Журнал сервера* → *Supervisor*.
       placeholder: |
         2025-08-20 11:18:49 ERROR client::client: Data channel 12947 closed by server with error: Connection reset by peer (os error 104)
       render: text

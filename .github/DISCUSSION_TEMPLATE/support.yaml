@@ -1,30 +1,28 @@
-title: "[Вопрос] "
+title: "Вопрос: "
 body:
   - type: textarea
     id: question
     attributes:
       label: Ваш вопрос
-      description: Опишите, с чем вам нужна помощь
+      description: |
+        Опишите, с чем вам нужна помощь. Кстати, ответы на некоторые вопросы уже есть в [документации](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md#%D1%87%D0%B0%D1%81%D1%82%D0%BE-%D0%B7%D0%B0%D0%B4%D0%B0%D0%B2%D0%B0%D0%B5%D0%BC%D1%8B%D0%B5-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B).
+
+        Если проблема больше похожа на баг, а не на вопрос — можно [оформить issue](https://github.com/black-roland/hassio-addon-cloudpub/issues/new/choose), но не обязательно: пишите где удобно, а я сам разберусь и переведу куда нужно.
+      placeholder: |
+        Настроил аддон, однако при переходе по сгенерированной ссылке получаю ошибку HTTP 400 (Bad Request). При этом в панели управления CloudPub публикация отображается со статусом «Активна» (зелёный индикатор).
     validations:
       required: true
 
   - type: textarea
-    id: checks
+    id: logs
     attributes:
-      label: Что вы уже пробовали?
+      label: Логи
       description: |
-        Перед тем как задать вопрос, проверьте пожалуйста:
-        1. **Устанавливаются ли другие аддоны?** Если нет — возможно, дело в сети.
-        2. **Заглянули ли в логи Supervisor?** (Настройки → Система → Журнал сервера → Supervisor)
+        Самая ценная часть — без логов я могу только гадать.
+        - Лог приложения: *Настройки* → *Приложения* → <название_приложения> → *Журнал*.
+        - Если проблема с установкой приложения, то понадобится лог Supervisor: *Настройки* → *Система* → *Журнал сервера* → *Supervisor*.
 
-        Также полезно заглянуть в [документацию](https://github.com/black-roland/hassio-addon-cloudpub/blob/master/cloudpub/DOCS.md) — там много ответов на частые вопросы.
+        Копируйте лог целиком, вместе с «шапкой» — в начале лога содержится важная информация о версии Home Assistant и CloudPub.
       placeholder: |
-        Пример:
-        - Проверил другие аддоны — устанавливаются
-        - В логах увидел "..."
-
-  - type: textarea
-    id: context
-    attributes:
-      label: Дополнительный контекст
-      description: Расскажите подробнее о вашей ситуации, если это нужно для ответа
+        2025-08-20 11:18:49 ERROR client::client: Data channel 12947 closed by server with error: Connection reset by peer (os error 104)
+      render: text
