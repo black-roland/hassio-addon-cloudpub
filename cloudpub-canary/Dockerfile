@@ -32,11 +32,11 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="Black Roland <mail@roland.black>" \
+    maintainer="Black Roland <iam@roland.black>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Black Roland <mail@roland.black>" \
-    org.opencontainers.image.authors="Black Roland <mail@roland.black>" \
+    org.opencontainers.image.vendor="Black Roland <iam@roland.black>" \
+    org.opencontainers.image.authors="Black Roland <iam@roland.black>" \
     org.opencontainers.image.licenses="MPL-2.0" \
     org.opencontainers.image.url="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
