@@ -21,6 +21,12 @@ bashio::log.info "Токен загружен из конфигурации."
 $CLO set token -- ${TOKEN}
 bashio::log.info "Аккаунт CloudPub успешно привязан."
 
+# `clo get hwid` returns a hardware hash only if every component succeeds.
+# This image has no `/etc/machine-id``, so it falls back to the stored `agent_id`.
+# Normally, HWID != `agent_id`.
+AGENT_ID=$(sed -n 's/^agent_id[[:space:]]*=[[:space:]]*"\([^"]*\)".*/\1/p' /config/client.toml)
+bashio::log.info "Идентификатор агента: ${AGENT_ID}, название хоста: $(</proc/sys/kernel/hostname)"
+
 # Retrieve the list of currently registered services from CloudPub
 # Exit code 124 from timeout will be propagated to the finish script
 REGISTERED_SERVICES=$(timeout 30 $CLO ls)
