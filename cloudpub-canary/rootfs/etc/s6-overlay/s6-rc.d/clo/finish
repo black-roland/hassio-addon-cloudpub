@@ -20,7 +20,11 @@ if [[ ${EXIT_CODE_SERVICE} -eq 124 ]]; then
   bashio::log.error "Превышено время ожидания при выполнении 'clo ls'. Возможно, отсутствует доступ к серверам CloudPub."
 fi
 
-bashio::log.info "Сервис ${SERVICE} завершил работу с кодом ${EXIT_CODE_SERVICE} (сигнал: ${EXIT_CODE_SIGNAL})"
+if [[ "${EXIT_CODE_SIGNAL}" == "15" ]]; then
+  bashio::log.debug "Сервис ${SERVICE} завершил работу с кодом ${EXIT_CODE_SERVICE} (сигнал: ${EXIT_CODE_SIGNAL})"
+else
+  bashio::log.info "Сервис ${SERVICE} завершил работу с кодом ${EXIT_CODE_SERVICE} (сигнал: ${EXIT_CODE_SIGNAL})"
+fi
 
 # Handle exit codes
 if [[ "${EXIT_CODE_SERVICE}" -eq 256 ]]; then

@@ -16,10 +16,10 @@ TOKEN=${TOKEN#"./clo set token "}
 if [ -z "$TOKEN" ]; then
   bashio::exit.nok "Необходимо указать токен для работы CloudPub."
 fi
-bashio::log.info "Токен загружен из конфигурации."
+bashio::log.debug "Токен загружен из конфигурации."
 
 $CLO set token -- ${TOKEN}
-bashio::log.info "Аккаунт CloudPub успешно привязан."
+bashio::log.debug "Аккаунт CloudPub успешно привязан."
 
 # `clo get hwid` returns a hardware hash only if every component succeeds.
 # This image has no `/etc/machine-id``, so it falls back to the stored `agent_id`.
@@ -71,28 +71,25 @@ for ID in $(bashio::config "services|keys"); do
     fi
   fi
 
-  bashio::log.info "Регистрация сервиса:"
-  bashio::log.info "  - Тип: ${TYPE}"
-  bashio::log.info "  - Локальный адрес: ${LOCAL_ADDR}"
-
   # Check if the service is already registered in CloudPub
   SERVICE_GUID=$(echo "${REGISTERED_SERVICES}" | grep -F "${LOCAL_ADDR}" | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' || true)
 
   if [ -z "${SERVICE_GUID}" ]; then
     # Service is not registered, so register it with CloudPub
     if bashio::var.has_value "${NAME}"; then
-      bashio::log.info "  - Имя: ${NAME}"
-      bashio::log.info "Выполнение команды: ${CLO} register --name ${NAME} ${TYPE} ${LOCAL_ADDR}"
+      bashio::log.info "Регистрация сервиса ${NAME}: ${TYPE} ${LOCAL_ADDR}"
+      bashio::log.debug "Выполнение команды: ${CLO} register --name ${NAME} ${TYPE} ${LOCAL_ADDR}"
       sleep 1
       $CLO register --name "${NAME}" "${TYPE}" "${LOCAL_ADDR}"
     else
-      bashio::log.info "Выполнение команды: ${CLO} register ${TYPE} ${LOCAL_ADDR}"
+      bashio::log.info "Регистрация сервиса: ${TYPE} ${LOCAL_ADDR}"
+      bashio::log.debug "Выполнение команды: ${CLO} register ${TYPE} ${LOCAL_ADDR}"
       sleep 1
       $CLO register "${TYPE}" "${LOCAL_ADDR}"
     fi
   else
     ADDON_CONFIG_GUIDS+=("${SERVICE_GUID}")
-    bashio::log.info "Сервис уже зарегистрирован."
+    bashio::log.debug "Сервис уже зарегистрирован."
   fi
 done
 
