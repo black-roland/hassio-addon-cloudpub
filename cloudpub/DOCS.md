@@ -78,7 +78,7 @@ services:
 
 ### Имя агента (название хоста)
 
-Чтобы изменить название хоста в [панели управления CloudPub](https://cloudpub.ru/dashboard/agents/), перейдите в *Настройки* → *Система* → [*Сеть*](https://my.home-assistant.io/redirect/network/).
+Чтобы изменить название хоста, отображаемое в [панели управления CloudPub](https://cloudpub.ru/dashboard/agents/), перейдите в *Настройки* → *Система* → [*Сеть*](https://my.home-assistant.io/redirect/network/).
 
 ## Часто задаваемые вопросы
 
