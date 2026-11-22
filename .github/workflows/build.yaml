@@ -92,6 +92,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
+          provenance: false
+          sbom: false
           tags: |
             ${{ env.CR_URI }}/black-roland/hassio-addon-cloudpub/${{ matrix.architecture }}:${{ needs.information.outputs.environment }}
             ${{ env.CR_URI }}/black-roland/hassio-addon-cloudpub/${{ matrix.architecture }}:${{ needs.information.outputs.version }}
