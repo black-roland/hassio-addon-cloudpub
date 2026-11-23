@@ -85,6 +85,39 @@ jobs:
           registry: ${{ env.CR_URI }}
           username: ${{ secrets.EVO_CR_LOGIN }}
           password: ${{ secrets.EVO_CR_PWD }}
+      - name: Install regctl
+        uses: iarekylew00t/regctl-installer@v4
+      - name: Untag old images (keep stable + its current version tag)
+        env:
+          REGISTRY: ${{ env.CR_URI }}
+          REPO: black-roland/hassio-addon-cloudpub/${{ matrix.architecture }}
+        run: |
+          set -euo pipefail
+
+          # Get the digest of the current stable tag (if it exists)
+          STABLE_DIGEST=""
+          if regctl tag ls "$REGISTRY/$REPO" 2>/dev/null | grep -qx stable; then
+            STABLE_DIGEST=$(regctl image digest "$REGISTRY/$REPO:stable" 2>/dev/null || true)
+          fi
+
+          echo "Stable digest: ${STABLE_DIGEST:-<none>}"
+
+          # List all tags and untag everything except stable and the version tag that points to the same digest
+          for tag in $(regctl tag ls "$REGISTRY/$REPO" 2>/dev/null || true); do
+            if [[ "$tag" == "stable" ]]; then
+              continue
+            fi
+            # If this tag points to the same digest as stable, keep it
+            if [[ -n "$STABLE_DIGEST" ]]; then
+              TAG_DIGEST=$(regctl image digest "$REGISTRY/$REPO:$tag" 2>/dev/null || true)
+              if [[ "$TAG_DIGEST" == "$STABLE_DIGEST" ]]; then
+                echo "Keeping $tag (shares digest with stable)"
+                continue
+              fi
+            fi
+            echo "Untagging $tag"
+            regctl tag rm "$REGISTRY/$REPO:$tag" || true
+          done
       - name: Download base image
         if: steps.flags.outputs.from != 'null'
         run: docker pull "${{ steps.flags.outputs.from }}"
